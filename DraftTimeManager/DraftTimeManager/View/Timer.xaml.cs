@@ -10,11 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace DraftTimeManager.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Timer : ContentView
+    public partial class Timer : ContentPage
     {
         public Timer()
         {
             InitializeComponent();
+        }
+
+        private void StartButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

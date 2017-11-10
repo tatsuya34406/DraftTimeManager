@@ -33,7 +33,7 @@ namespace DraftTimeManager.View
             {
                 MenuItems = new ObservableCollection<MenuMenuItem>(new[]
                 {
-                    new MenuMenuItem { Id = 0, Title = "DraftTimer" },
+                    new MenuMenuItem { Id = 0, Title = "DraftTimer", TargetType = typeof(Timer) },
                     new MenuMenuItem { Id = 1, Title = "Page 2" },
                     new MenuMenuItem { Id = 2, Title = "Page 3" },
                     new MenuMenuItem { Id = 3, Title = "Page 4" },
