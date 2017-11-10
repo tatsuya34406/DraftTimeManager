@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DraftTimeManager
+namespace DraftTimeManager.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuDetail : ContentPage
+    public partial class Timer : ContentView
     {
-        public MenuDetail()
+        public Timer()
         {
             InitializeComponent();
         }
