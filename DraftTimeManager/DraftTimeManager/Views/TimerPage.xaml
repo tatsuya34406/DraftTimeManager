@@ -1,24 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DraftTimeManager.View.TimerPage"
+             x:Class="DraftTimeManager.Views.TimerPage"
              Title="Timer">
     <StackLayout Padding="10">
-        <Label Text="Pack 1, Pick 1"
-               x:Name="PickCount"
+        <Label Text="{Binding Path=PickCount}"
+               x:Name="lblPickStatus"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontSize="30"
                HeightRequest="100"/>
-        <Label Text="00.00"
-               x:Name="Time" 
+        <Label Text="{Binding Path=TimeCount}"
+               x:Name="lblTimeCount" 
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontSize="30"
                HeightRequest="150"/>
         <Button Text="TimerStart"
-                x:Name="StartButton"
+                x:Name="btnStart"
                 VerticalOptions="EndAndExpand"
-                Clicked="StartButton_Clicked" />
+                IsEnabled="{Binding Path=IsBtnEnabled}}"
+                Clicked="btnStart_Clicked" />
     </StackLayout>
 </ContentPage>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DraftTimeManager.View
+namespace DraftTimeManager.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuDetail : ContentPage

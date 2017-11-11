@@ -13,7 +13,7 @@ namespace DraftTimeManager
         {
             InitializeComponent();
 
-            MainPage = new DraftTimeManager.View.Menu();
+            MainPage = new DraftTimeManager.Views.Menu();
         }
 
         protected override void OnStart()
