@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace DraftTimeManager.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Timer : ContentPage
+    public partial class TimerPage : ContentPage
     {
-        public Timer()
+        public TimerPage()
         {
             InitializeComponent();
         }
