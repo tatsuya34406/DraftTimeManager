@@ -27,16 +27,7 @@ namespace DraftTimeManager.Views
 
         private void btnStart_Clicked(object sender, EventArgs e)
         {
-            model.Initialize();
-            model.IsBtnEnabled = false;
-            var timeunit = 1;
-
-            Device.StartTimer(
-                TimeSpan.FromSeconds(timeunit),
-                () =>
-                {
-                    return model.TimeMove(timeunit);
-                });
+            model.TimerStart();
         }
     }
 }

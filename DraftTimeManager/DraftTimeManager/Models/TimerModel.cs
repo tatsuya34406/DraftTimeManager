@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.ComponentModel;
+using DraftTimeManager.Interfaces;
+using Xamarin.Forms;
 
 namespace DraftTimeManager.Models
 {
@@ -17,6 +19,7 @@ namespace DraftTimeManager.Models
         public double time;
         private bool isInterval;
         private bool isBtnEnabled;
+        private bool isTimerStart;
         public List<double> countList;
         public List<double> intervalList;
 
@@ -97,6 +100,19 @@ namespace DraftTimeManager.Models
             }
         }
 
+        public bool IsTimerStart
+        {
+            get { return this.isTimerStart; }
+            set
+            {
+                if (this.isTimerStart != value)
+                {
+                    this.isTimerStart = value;
+                    OnPropertyChanged("IsTimerStart");
+                }
+            }
+        }
+
         public TimerModel()
         {
             countList = new List<double>() { 40, 35, 30, 25, 25, 20, 20, 15, 10, 10, 5, 5, 5, 5 };
@@ -111,6 +127,7 @@ namespace DraftTimeManager.Models
             Time = countList.First();
             IsInterval = false;
             isBtnEnabled = true;
+            isTimerStart = false;
         }
 
         public bool TimeMove(double timeunit)
@@ -121,7 +138,8 @@ namespace DraftTimeManager.Models
             {
                 if (Pack >= packMax && Pick >= pickMax)
                 {
-                    IsBtnEnabled = true;
+                    DependencyService.Get<ITextToSpeech>().Speak($"Draft is over. Please build your deck.");
+                    Initialize();
                     return false;
                 }
 
@@ -129,6 +147,7 @@ namespace DraftTimeManager.Models
                 {
                     IsInterval = false;
                     Time = countList.First();
+                    DependencyService.Get<ITextToSpeech>().Speak($"Draft pack {Pack}. {Time} seconds.");
                     return true;
                 }
 
@@ -136,6 +155,7 @@ namespace DraftTimeManager.Models
                 {
                     Pick++;
                     Time = countList.ElementAt(pick - 1);
+                    DependencyService.Get<ITextToSpeech>().Speak($"Draft. {Time} seconds.");
                 }
                 else
                 {
@@ -143,10 +163,33 @@ namespace DraftTimeManager.Models
                     Pack++;
                     IsInterval = true;
                     Time = intervalList.ElementAt(pack - 2);
+                    DependencyService.Get<ITextToSpeech>().Speak($"Check picked card. {Time} seconds.");
                 }
+            }
+            else if((Time <= 5 && Pick <= 10) || Time <= 3)
+            {
+                DependencyService.Get<ITextToSpeech>().Speak($"{Time}");
             }
 
             return true;
+        }
+
+        public void TimerStart()
+        {
+            if (this.IsTimerStart) return;
+
+            Initialize();
+            IsBtnEnabled = false;
+            IsTimerStart = true;
+            var timeunit = 1;
+
+            DependencyService.Get<ITextToSpeech>().Speak($"Draft Start. {countList.First()} seconds.");
+            Device.StartTimer(
+                TimeSpan.FromSeconds(timeunit),
+                () =>
+                {
+                    return this.TimeMove(timeunit);
+                });
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
