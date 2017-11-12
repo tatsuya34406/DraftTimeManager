@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DraftTimeManager.View.Menu"
-             xmlns:pages="clr-namespace:DraftTimeManager.View">
+             x:Class="DraftTimeManager.Views.Menu"
+             xmlns:pages="clr-namespace:DraftTimeManager.Views">
   <MasterDetailPage.Master>
     <pages:MenuMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
