@@ -18,7 +18,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <JavaMaximumHeapSize />
@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DraftTimeManager\DraftTimeManager.csproj">
-      <Project>{0fe27947-dcf5-4157-8630-b2e6116bbb02}</Project>
+      <Project>{41954B78-DF72-4934-BCE4-7CC44A76CD4B}</Project>
       <Name>DraftTimeManager</Name>
     </ProjectReference>
   </ItemGroup>
