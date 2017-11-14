@@ -5,3 +5,4 @@ packages
 .vs
 *.csproj.user
 *.userprefs
+*.csproj.bak
