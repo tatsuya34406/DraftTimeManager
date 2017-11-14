@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using DraftTimeManager.Interfaces;
 using Xamarin.Forms;
+using PropertyChanged;
 
 namespace DraftTimeManager.Models
 {
@@ -14,109 +15,24 @@ namespace DraftTimeManager.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public int pack;
-        public int pick;
-        public double time;
-        private bool isInterval;
-        private bool isBtnEnabled;
-        private bool isTimerStart;
-        public List<double> countList;
-        public List<double> intervalList;
+        private List<double> countList = new List<double>() { 40, 35, 30, 25, 25, 20, 20, 15, 10, 10, 5, 5, 5, 5 };
+        private List<double> intervalList = new List<double>() { 30, 40 };
+        private int pickMax = 14;
+        private int packMax = 3;
 
-        protected int pickMax = 14;
-        protected int packMax = 3;
+        public int Pack { get; set; }
+        public int Pick { get; set; }
+        public double Time { get; set; }
 
-        public int Pack
-        {
-            get { return this.pack; }
-            set
-            {
-                if(this.pack != value)
-                {
-                    this.pack = value;
-                    OnPropertyChanged("PickCount");
-                }
-            }
-        }
-        public int Pick
-        {
-            get { return this.pick; }
-            set
-            {
-                if (this.pick != value)
-                {
-                    this.pick = value;
-                    OnPropertyChanged("PickCount");
-                }
-            }
-        }
-        public double Time
-        {
-            get { return this.time; }
-            set
-            {
-                if (this.time != value)
-                {
-                    this.time = value;
-                    OnPropertyChanged("TimeCount");
-                }
-            }
-        }
+        public string PickCount => IsInterval ? "Check picked card." : $"Pack {Pack}, Pick {Pick}";
+        public string TimeCount => $"{Time:00}"; 
 
-        public string PickCount
-        {
-            get
-            {
-                return IsInterval 
-                    ? "Check picked card."
-                    : $"Pack {Pack}, Pick {Pick}";
-            }
-        }
-        public string TimeCount { get { return $"{time:00}"; } }
-
-        public bool IsInterval
-        {
-            get { return isInterval; }
-            set
-            {
-                if (this.isInterval != value)
-                {
-                    this.isInterval = value;
-                    OnPropertyChanged("PickCount");
-                }
-            }
-        }
-
-        public bool IsBtnEnabled
-        {
-            get { return this.isBtnEnabled; }
-            set
-            {
-                if (this.isBtnEnabled != value)
-                {
-                    this.isBtnEnabled = value;
-                    OnPropertyChanged("IsBtnEnabled");
-                }
-            }
-        }
-
-        public bool IsTimerStart
-        {
-            get { return this.isTimerStart; }
-            set
-            {
-                if (this.isTimerStart != value)
-                {
-                    this.isTimerStart = value;
-                    OnPropertyChanged("IsTimerStart");
-                }
-            }
-        }
+        public bool IsInterval { get; set; }
+        public bool IsBtnEnabled { get; set; }
+        public bool IsTimerStart { get; set; }
 
         public TimerModel()
         {
-            countList = new List<double>() { 40, 35, 30, 25, 25, 20, 20, 15, 10, 10, 5, 5, 5, 5 };
-            intervalList = new List<double>() { 30, 40 };
             Initialize();
         }
 
@@ -126,8 +42,8 @@ namespace DraftTimeManager.Models
             Pick = 1;
             Time = countList.First();
             IsInterval = false;
-            isBtnEnabled = true;
-            isTimerStart = false;
+            IsBtnEnabled = true;
+            IsTimerStart = false;
         }
 
         public bool TimeMove(double timeunit)
@@ -151,10 +67,10 @@ namespace DraftTimeManager.Models
                     return true;
                 }
 
-                if (pick < pickMax)
+                if (Pick < pickMax)
                 {
                     Pick++;
-                    Time = countList.ElementAt(pick - 1);
+                    Time = countList.ElementAt(Pick - 1);
                     DependencyService.Get<ITextToSpeech>().Speak($"Draft. {Time} seconds.");
                 }
                 else
@@ -162,7 +78,7 @@ namespace DraftTimeManager.Models
                     Pick = 1;
                     Pack++;
                     IsInterval = true;
-                    Time = intervalList.ElementAt(pack - 2);
+                    Time = intervalList.ElementAt(Pack - 2);
                     DependencyService.Get<ITextToSpeech>().Speak($"Check picked card. {Time} seconds.");
                 }
             }
@@ -190,14 +106,6 @@ namespace DraftTimeManager.Models
                 {
                     return this.TimeMove(timeunit);
                 });
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
     }
 }
