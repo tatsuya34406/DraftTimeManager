@@ -19,6 +19,7 @@ namespace DraftTimeManager.Models
         private List<double> intervalList = new List<double>() { 30, 40 };
         private int pickMax = 14;
         private int packMax = 3;
+        private bool endFlg = false;
 
         public int Pack { get; set; }
         public int Pick { get; set; }
@@ -104,8 +105,14 @@ namespace DraftTimeManager.Models
                 TimeSpan.FromSeconds(timeunit),
                 () =>
                 {
+                    if (endFlg) return false;
                     return this.TimeMove(timeunit);
                 });
+        }
+
+        public void TimerEnd()
+        {
+            endFlg = true;
         }
     }
 }

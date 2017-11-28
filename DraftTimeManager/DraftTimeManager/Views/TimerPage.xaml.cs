@@ -29,5 +29,11 @@ namespace DraftTimeManager.Views
         {
             model.TimerStart();
         }
+
+        protected override void OnDisappearing()
+        {
+            model.TimerEnd();
+            base.OnDisappearing();
+        }
     }
 }

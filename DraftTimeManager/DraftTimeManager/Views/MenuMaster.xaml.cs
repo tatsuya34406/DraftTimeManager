@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using PropertyChanged;
+
 namespace DraftTimeManager.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -43,13 +45,6 @@ namespace DraftTimeManager.Views
 
             #region INotifyPropertyChanged Implementation
             public event PropertyChangedEventHandler PropertyChanged;
-            void OnPropertyChanged([CallerMemberName] string propertyName = "")
-            {
-                if (PropertyChanged == null)
-                    return;
-
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
             #endregion
         }
     }

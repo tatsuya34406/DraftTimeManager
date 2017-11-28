@@ -23,7 +23,7 @@ namespace DraftTimeManager.Views
             var item = e.SelectedItem as MenuMenuItem;
             if (item == null)
                 return;
-
+            
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 
