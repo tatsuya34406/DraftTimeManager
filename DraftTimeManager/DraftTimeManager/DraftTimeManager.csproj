@@ -59,6 +59,11 @@
     </Compile>
     <Compile Include="Interfaces\IFileHelper.cs" />
     <Compile Include="Models\ConnectionModel.cs" />
+    <Compile Include="Entities\Users.cs" />
+    <Compile Include="Entities\Environments.cs" />
+    <Compile Include="Entities\EnvironmentUserScore.cs" />
+    <Compile Include="Entities\OpponentUserScore.cs" />
+    <Compile Include="Entities\DraftResults.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -132,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
