@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using DraftTimeManager.Entities;
 
 namespace DraftTimeManager.Models
 {
@@ -19,7 +20,7 @@ namespace DraftTimeManager.Models
 
         private async Task<SQLiteConnection> CreateConnection()
         {
-            const string DatabaseFileName = "item.db3";
+            const string DatabaseFileName = "draftmanager.db3";
             // ルートフォルダを取得する
             IFolder rootFolder = FileSystem.Current.LocalStorage;
             // DBファイルの存在チェックを行う
@@ -29,7 +30,11 @@ namespace DraftTimeManager.Models
                 // 存在しなかった場合、新たにDBファイルを作成しテーブルも併せて新規作成する
                 IFile file = await rootFolder.CreateFileAsync(DatabaseFileName, CreationCollisionOption.ReplaceExisting);
                 var connection = new SQLiteConnection(file.Path);
-                //connection.CreateTable<Item>();
+                connection.CreateTable<Users>();
+                connection.CreateTable<Environments>();
+                connection.CreateTable<EnvironmentUserScore>();
+                connection.CreateTable<OpponentUserScore>();
+                connection.CreateTable<DraftResults>();
                 return connection;
             }
             else
