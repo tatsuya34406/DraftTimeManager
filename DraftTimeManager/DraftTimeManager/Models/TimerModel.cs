@@ -17,6 +17,7 @@ namespace DraftTimeManager.Models
 
         private List<double> countList = new List<double>() { 40, 35, 30, 25, 25, 20, 20, 15, 10, 10, 5, 5, 5, 5 };
         private List<double> intervalList = new List<double>() { 60, 90 };
+        private double checktime = 5;
         private int pickMax = 14;
         private int packMax = 3;
         private bool endFlg = false;
@@ -31,6 +32,7 @@ namespace DraftTimeManager.Models
         public bool IsInterval { get; set; }
         public bool IsBtnEnabled { get; set; }
         public bool IsTimerStart { get; set; }
+        public bool IsPackCheck { get; set; }
 
         public TimerModel()
         {
@@ -68,11 +70,20 @@ namespace DraftTimeManager.Models
                     return true;
                 }
 
-                if (Pick < pickMax)
+                if (IsPackCheck)
                 {
+                    IsPackCheck = false;
                     Pick++;
                     Time = countList.ElementAt(Pick - 1);
                     DependencyService.Get<ITextToSpeech>().Speak($"Draft. {Time} seconds.");
+                    return true;
+                }
+
+                if (Pick < pickMax)
+                {
+                    IsPackCheck = true;
+                    Time = checktime;
+                    DependencyService.Get<ITextToSpeech>().Speak($"Check the number of cards.");
                 }
                 else
                 {
@@ -80,14 +91,14 @@ namespace DraftTimeManager.Models
                     Pack++;
                     IsInterval = true;
                     Time = intervalList.ElementAt(Pack - 2);
-                    DependencyService.Get<ITextToSpeech>().Speak($"Check picked card. {Time} seconds.");
+                    DependencyService.Get<ITextToSpeech>().Speak($"Check picked cards. {Time} seconds.");
                 }
             }
-            else if (Time <= 3)
+            else if (Time <= 3 && !IsPackCheck)
             {
                 DependencyService.Get<ITextToSpeech>().Speak($"{Time}");
             }
-            else if (Time <= 5 && Pick <= 10)
+            else if (Time <= 5 && Pick <= 10 && !IsPackCheck)
             {
                 DependencyService.Get<ITextToSpeech>().Speak($"{Time}");
             }
