@@ -36,10 +36,12 @@ namespace DraftTimeManager.Views
                 MenuItems = new ObservableCollection<MenuMenuItem>(new[]
                 {
                     new MenuMenuItem { Id = 0, Title = "DraftTimer", TargetType = typeof(TimerPage) },
-                    new MenuMenuItem { Id = 1, Title = "Page 2" },
-                    new MenuMenuItem { Id = 2, Title = "Page 3" },
-                    new MenuMenuItem { Id = 3, Title = "Page 4" },
-                    new MenuMenuItem { Id = 4, Title = "Page 5" },
+                    new MenuMenuItem { Id = 1, Title = "PodCreate" },
+                    new MenuMenuItem { Id = 2, Title = "UserRegistration" },
+                    new MenuMenuItem { Id = 3, Title = "EnvironmentRegistration" },
+                    new MenuMenuItem { Id = 4, Title = "OverallResults" },
+                    new MenuMenuItem { Id = 5, Title = "PersonalResults" },
+                    new MenuMenuItem { Id = 6, Title = "DraftHistory" },
                 });
             }
 
