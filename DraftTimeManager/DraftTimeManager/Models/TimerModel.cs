@@ -83,7 +83,11 @@ namespace DraftTimeManager.Models
                     DependencyService.Get<ITextToSpeech>().Speak($"Check picked card. {Time} seconds.");
                 }
             }
-            else if((Time <= 5 && Pick <= 10) || Time <= 3)
+            else if (Time <= 3)
+            {
+                DependencyService.Get<ITextToSpeech>().Speak($"{Time}");
+            }
+            else if (Time <= 5 && Pick <= 10)
             {
                 DependencyService.Get<ITextToSpeech>().Speak($"{Time}");
             }
@@ -99,7 +103,8 @@ namespace DraftTimeManager.Models
             IsBtnEnabled = false;
             IsTimerStart = true;
             var timeunit = 1;
-
+            DependencyService.Get<ISleepScreen>().SleepDisabled();
+                             
             DependencyService.Get<ITextToSpeech>().Speak($"Draft Start. {countList.First()} seconds.");
             Device.StartTimer(
                 TimeSpan.FromSeconds(timeunit),
@@ -113,6 +118,7 @@ namespace DraftTimeManager.Models
         public void TimerEnd()
         {
             endFlg = true;
+            DependencyService.Get<ISleepScreen>().SleepEnabled();
         }
     }
 }
