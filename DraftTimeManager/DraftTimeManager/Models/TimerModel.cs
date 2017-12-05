@@ -16,7 +16,7 @@ namespace DraftTimeManager.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         private List<double> countList = new List<double>() { 40, 35, 30, 25, 25, 20, 20, 15, 10, 10, 5, 5, 5, 5 };
-        private List<double> intervalList = new List<double>() { 30, 40 };
+        private List<double> intervalList = new List<double>() { 60, 90 };
         private int pickMax = 14;
         private int packMax = 3;
         private bool endFlg = false;
