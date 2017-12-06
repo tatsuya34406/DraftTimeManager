@@ -114,7 +114,7 @@ namespace DraftTimeManager.Models
             IsBtnEnabled = false;
             IsTimerStart = true;
             var timeunit = 1;
-            DependencyService.Get<ISleepScreen>().SleepDisabled();
+            DependencyService.Get<ISleepScreen>(DependencyFetchTarget.GlobalInstance).SleepDisabled();
                              
             DependencyService.Get<ITextToSpeech>().Speak($"Draft Start. {countList.First()} seconds.");
             Device.StartTimer(
@@ -129,7 +129,7 @@ namespace DraftTimeManager.Models
         public void TimerEnd()
         {
             endFlg = true;
-            DependencyService.Get<ISleepScreen>().SleepEnabled();
+            DependencyService.Get<ISleepScreen>(DependencyFetchTarget.GlobalInstance).SleepEnabled();
         }
     }
 }
