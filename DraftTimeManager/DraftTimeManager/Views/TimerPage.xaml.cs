@@ -22,12 +22,18 @@ namespace DraftTimeManager.Views
             model = new TimerModel();
             this.lblPickStatus.BindingContext = 
                 this.lblTimeCount.BindingContext = 
-                this.btnStart.BindingContext = model;
+                this.btnStart.BindingContext = 
+                this.btnPause.BindingContext = model;
         }
 
         private void btnStart_Clicked(object sender, EventArgs e)
         {
             model.TimerStart();
+        }
+
+        private void btnPause_Clicked(object sender, EventArgs e)
+        {
+            
         }
 
         protected override void OnDisappearing()

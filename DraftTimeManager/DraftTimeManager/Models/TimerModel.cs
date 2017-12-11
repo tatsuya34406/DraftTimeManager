@@ -30,7 +30,8 @@ namespace DraftTimeManager.Models
         public string TimeCount => $"{Time:00}"; 
 
         public bool IsInterval { get; set; }
-        public bool IsBtnEnabled { get; set; }
+        public bool IsBtnStartEnabled => !IsTimerStart;
+        public bool IsBtnPauseEnabled => IsTimerStart;
         public bool IsTimerStart { get; set; }
         public bool IsPackCheck { get; set; }
 
@@ -45,7 +46,6 @@ namespace DraftTimeManager.Models
             Pick = 1;
             Time = countList.First();
             IsInterval = false;
-            IsBtnEnabled = true;
             IsTimerStart = false;
         }
 
@@ -111,7 +111,6 @@ namespace DraftTimeManager.Models
             if (this.IsTimerStart) return;
 
             Initialize();
-            IsBtnEnabled = false;
             IsTimerStart = true;
             var timeunit = 1;
             DependencyService.Get<ISleepScreen>(DependencyFetchTarget.GlobalInstance).SleepDisabled();

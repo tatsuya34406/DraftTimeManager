@@ -16,10 +16,27 @@
                VerticalTextAlignment="Center"
                FontSize="30"
                HeightRequest="150"/>
-        <Button Text="TimerStart"
+        <Grid VerticalOptions ="EndAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="TimerStart"
                 x:Name="btnStart"
                 VerticalOptions="EndAndExpand"
-                IsEnabled="{Binding Path=IsBtnEnabled}"
-                Clicked="btnStart_Clicked" />
+                IsEnabled="{Binding Path=IsBtnStartEnabled}"
+                Clicked="btnStart_Clicked" 
+                Grid.Row="0" Grid.Column="0"/>
+            <Button Text="Pause"
+                x:Name="btnPause"
+                VerticalOptions="EndAndExpand"
+                IsEnabled="{Binding Path=IsBtnPauseEnabled}"
+                Clicked="btnPause_Clicked" 
+                Grid.Row="0" Grid.Column="1"/>
+        </Grid>
     </StackLayout>
+
 </ContentPage>
