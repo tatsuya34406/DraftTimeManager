@@ -75,6 +75,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Images\cork-wallet.png" />
+    <EmbeddedResource Include="Images\rotate.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PropertyChanged, Version=2.1.4.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
@@ -111,8 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Images\roll_right.png" />
-    <None Include="Images\roll_left.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Menu.xaml">
