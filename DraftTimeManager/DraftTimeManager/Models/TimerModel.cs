@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using DraftTimeManager.Interfaces;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using PropertyChanged;
 
 namespace DraftTimeManager.Models
@@ -25,6 +26,7 @@ namespace DraftTimeManager.Models
         public int Pack { get; set; }
         public int Pick { get; set; }
         public double Time { get; set; }
+        public Color TimeColor => Time <= 5 ? Color.FromHex("991845") : Color.FromHex("222");
 
         public string PickCount => IsInterval ? "Check picked card." : $"Pack {Pack}, Pick {Pick}";
         public string TimeCount => $"{Time:00}"; 
@@ -32,8 +34,12 @@ namespace DraftTimeManager.Models
         public bool IsInterval { get; set; }
         public bool IsBtnStartEnabled => !IsTimerStart;
         public bool IsBtnPauseEnabled => IsTimerStart;
+        public bool IsBtnResetEnabled => !IsTimerStart;
         public bool IsTimerStart { get; set; }
         public bool IsPackCheck { get; set; }
+
+        public ImageSource RotateSource { get; set; }
+        public double RotateY => Pack % 2 == 1 ? 0 : 180;
 
         public TimerModel()
         {
@@ -47,6 +53,7 @@ namespace DraftTimeManager.Models
             Time = countList.First();
             IsInterval = false;
             IsTimerStart = false;
+            RotateSource = ImageSource.FromResource("DraftTimeManager.Images.rotate.png");
         }
 
         public bool TimeMove(double timeunit)
@@ -110,17 +117,21 @@ namespace DraftTimeManager.Models
         {
             if (this.IsTimerStart) return;
 
-            Initialize();
             IsTimerStart = true;
             var timeunit = 1;
             DependencyService.Get<ISleepScreen>(DependencyFetchTarget.GlobalInstance).SleepDisabled();
-                             
-            DependencyService.Get<ITextToSpeech>().Speak($"Draft Start. {countList.First()} seconds.");
+
+            DependencyService.Get<ITextToSpeech>().Speak($"Draft Start. {Time} seconds.");
             Device.StartTimer(
                 TimeSpan.FromSeconds(timeunit),
                 () =>
                 {
-                    if (endFlg) return false;
+                    if (endFlg) 
+                    {
+                        IsTimerStart = false;
+                        endFlg = false;
+                        return false;   
+                    }
                     return this.TimeMove(timeunit);
                 });
         }

@@ -3,40 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DraftTimeManager.Views.TimerPage"
              Title="Timer">
-    <StackLayout Padding="10">
-        <Label Text="{Binding Path=PickCount}"
+    <AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+
+        <Image x:Name="rotateimage" Source="{Binding RotateSource}"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+            RotationY="{Binding RotateY}"/>
+        
+        <Label Text="{Binding PickCount}"
                x:Name="lblPickStatus"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontSize="30"
-               HeightRequest="100"/>
-        <Label Text="{Binding Path=TimeCount}"
+               HeightRequest="100"
+               TextColor="#A84A6B"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               AbsoluteLayout.LayoutBounds="0.5, 0.1, AutoSize, AutoSize"/>
+        
+        <Label Text="{Binding TimeCount}"
                x:Name="lblTimeCount" 
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
-               FontSize="30"
-               HeightRequest="150"/>
-        <Grid VerticalOptions ="EndAndExpand">
+               VerticalOptions="Fill"
+               FontSize="60"
+               FontAttributes="Bold"
+               TextColor="{Binding TimeColor}"
+               HeightRequest="150"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"/>
+        
+        <Grid VerticalOptions ="End" HorizontalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 1, 1, 1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="200" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Text="TimerStart"
+            <Button Text="Start"
                 x:Name="btnStart"
-                VerticalOptions="EndAndExpand"
                 IsEnabled="{Binding Path=IsBtnStartEnabled}"
                 Clicked="btnStart_Clicked" 
+                BackgroundColor="#1E3A67"
+                TextColor="#EEE"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand" Margin="10, 5, 5, 10"
                 Grid.Row="0" Grid.Column="0"/>
             <Button Text="Pause"
                 x:Name="btnPause"
-                VerticalOptions="EndAndExpand"
                 IsEnabled="{Binding Path=IsBtnPauseEnabled}"
                 Clicked="btnPause_Clicked" 
+                BackgroundColor="#1E3A67"
+                TextColor="#EEE"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand" Margin="5, 5, 5, 10"
                 Grid.Row="0" Grid.Column="1"/>
+            <Button Text="Reset"
+                x:Name="btnReset"
+                IsEnabled="{Binding Path=IsBtnResetEnabled}"
+                Clicked="btnReset_Clicked" 
+                BackgroundColor="#1E3A67"
+                TextColor="#EEE"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand" Margin="5, 5, 10, 10"
+                Grid.Row="0" Grid.Column="2"/>
         </Grid>
-    </StackLayout>
-
+    </AbsoluteLayout>
 </ContentPage>
