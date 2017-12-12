@@ -15,6 +15,8 @@ namespace DraftTimeManager.Views
         public MenuDetail()
         {
             InitializeComponent();
+
+            background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
         }
     }
 }
