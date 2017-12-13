@@ -20,13 +20,8 @@ namespace DraftTimeManager.Views
             InitializeComponent();
 
             model = new TimerModel();
-            this.lblPickStatus.BindingContext = 
-                this.lblTimeCount.BindingContext = 
-                this.btnStart.BindingContext = 
-                this.btnPause.BindingContext = 
-                this.btnReset.BindingContext = 
-                this.rotateimage.BindingContext = model;
-            
+            this.BindingContext = model;
+
             background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
         }
 
@@ -38,7 +33,7 @@ namespace DraftTimeManager.Views
                 TimeSpan.FromSeconds(1),
                 () => 
                 {
-                    if (!model.IsTimerStart) return false;
+                if (!model.IsTimerStart) return false;
                     rotateimage.RelRotateTo(10, 1000);
                     return true;
                 });
@@ -52,6 +47,18 @@ namespace DraftTimeManager.Views
         private void btnReset_Clicked(object sender, EventArgs e)
         {
             model.Initialize();
+        }
+
+        private void PackStepper_ValueChanged(object sender, EventArgs e)
+        {
+            model.Pack = Convert.ToInt32(this.PackStepper.Value);
+            model.SetPickTime();
+        }
+
+        private void PickStepper_ValueChanged(object sender, EventArgs e)
+        {
+            model.Pick = Convert.ToInt32(this.PickStepper.Value);
+            model.SetPickTime();
         }
 
         protected override void OnDisappearing()

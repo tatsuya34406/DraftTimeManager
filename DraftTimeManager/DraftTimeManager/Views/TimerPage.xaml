@@ -13,17 +13,7 @@
             AbsoluteLayout.LayoutFlags="PositionProportional"
             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
             RotationY="{Binding RotateY}"/>
-        
-        <Label Text="{Binding PickCount}"
-               x:Name="lblPickStatus"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               FontSize="30"
-               HeightRequest="100"
-               TextColor="#A84A6B"
-               AbsoluteLayout.LayoutFlags="PositionProportional"
-               AbsoluteLayout.LayoutBounds="0.5, 0.1, AutoSize, AutoSize"/>
-        
+
         <Label Text="{Binding TimeCount}"
                x:Name="lblTimeCount" 
                HorizontalTextAlignment="Center"
@@ -35,6 +25,64 @@
                HeightRequest="150"
                AbsoluteLayout.LayoutFlags="PositionProportional"
                AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"/>
+        
+        <Grid VerticalOptions ="Start" HorizontalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="PackCount"
+                x:Name="lblPackStepper" 
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                TextColor="#222"
+                Opacity="{Binding lblOpacity}"
+                Grid.Row="0" Grid.Column="0"/>
+            
+            <Stepper x:Name="PackStepper"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Maximum="3" Minimum="1"
+                Opacity="{Binding lblOpacity}"
+                Value="{Binding Pack}"
+                ValueChanged="PackStepper_ValueChanged"
+                Grid.Row="1" Grid.Column="0"/>
+
+            <Label Text="PickCount"
+                x:Name="lblPickStepper" 
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                TextColor="#222"
+                Opacity="{Binding lblOpacity}"
+                Grid.Row="0" Grid.Column="1"/>
+                    
+            <Stepper x:Name="PickStepper"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Maximum="14" Minimum="1"
+                Opacity="{Binding lblOpacity}"
+                Value="{Binding Pick}"
+                ValueChanged="PickStepper_ValueChanged"
+                Grid.Row="1" Grid.Column="1"/>
+            
+            <Label Text="{Binding PickCount}"
+                x:Name="lblPickStatus"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontSize="30"
+                TextColor="#A84A6B"
+                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
+        </Grid>
+        
+
         
         <Grid VerticalOptions ="End" HorizontalOptions="FillAndExpand"
             AbsoluteLayout.LayoutFlags="All"

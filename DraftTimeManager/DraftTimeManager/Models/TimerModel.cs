@@ -37,9 +37,10 @@ namespace DraftTimeManager.Models
         public bool IsBtnResetEnabled => !IsTimerStart;
         public bool IsTimerStart { get; set; }
         public bool IsPackCheck { get; set; }
-
+         
         public ImageSource RotateSource { get; set; }
         public double RotateY => Pack % 2 == 1 ? 0 : 180;
+        public double lblOpacity => IsTimerStart ? 0 : 100;
 
         public TimerModel()
         {
@@ -72,7 +73,9 @@ namespace DraftTimeManager.Models
                 if (IsInterval)
                 {
                     IsInterval = false;
-                    Time = countList.First();
+                    Pick = 1;
+                    Pack++;
+                    Time = countList.ElementAt(Pick - 1);
                     DependencyService.Get<ITextToSpeech>().Speak($"Draft pack {Pack}. {Time} seconds.");
                     return true;
                 }
@@ -94,10 +97,8 @@ namespace DraftTimeManager.Models
                 }
                 else
                 {
-                    Pick = 1;
-                    Pack++;
                     IsInterval = true;
-                    Time = intervalList.ElementAt(Pack - 2);
+                    Time = intervalList.ElementAt(Pack - 1);
                     DependencyService.Get<ITextToSpeech>().Speak($"Check picked cards. {Time} seconds.");
                 }
             }
@@ -140,6 +141,11 @@ namespace DraftTimeManager.Models
         {
             endFlg = true;
             DependencyService.Get<ISleepScreen>(DependencyFetchTarget.GlobalInstance).SleepEnabled();
+        }
+       
+        public void SetPickTime()
+        {
+            Time = countList.ElementAt(Pick - 1);
         }
     }
 }
