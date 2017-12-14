@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace DraftTimeManager.Entities
 {
-    [Table("Environments")]
-    public class Environments
+    [Table("Settings")]
+    public class Settings
     {
-        [PrimaryKey, Column("Env_Id")]
-        public string Env_Id { get; set; }
+        [NotNull, Column("Volume")]
+        public int Volume { get; set; }
 
-        [NotNull, Column("Env_Name")]
-        public string Env_Name { get; set; }
+        [NotNull, Column("Pick_Interval")]
+        public int Pick_Interval { get; set; }
 
         [NotNull, Column("Picks")]
         public int Picks { get; set; }

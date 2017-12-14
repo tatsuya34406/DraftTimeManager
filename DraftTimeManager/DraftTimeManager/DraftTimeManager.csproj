@@ -65,6 +65,8 @@
     <Compile Include="Entities\OpponentUserScore.cs" />
     <Compile Include="Entities\DraftResults.cs" />
     <Compile Include="Interfaces\ISleepScreen.cs" />
+    <Compile Include="Entities\Settings.cs" />
+    <Compile Include="Entities\TempDraftResults.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

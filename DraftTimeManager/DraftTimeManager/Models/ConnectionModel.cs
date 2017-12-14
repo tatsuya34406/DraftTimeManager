@@ -14,8 +14,13 @@ namespace DraftTimeManager.Models
 {
     public class ConnectionModel
     {
+        public SQLiteConnection conn;
         public ConnectionModel()
         {
+            var _conn = CreateConnection();
+            _conn.Wait();
+
+            conn = _conn.Result;
         }
 
         private async Task<SQLiteConnection> CreateConnection()
@@ -34,7 +39,9 @@ namespace DraftTimeManager.Models
                 connection.CreateTable<Environments>();
                 connection.CreateTable<EnvironmentUserScore>();
                 connection.CreateTable<OpponentUserScore>();
+                connection.CreateTable<TempDraftResults>();
                 connection.CreateTable<DraftResults>();
+                connection.CreateTable<Settings>();
                 return connection;
             }
             else
