@@ -7,7 +7,7 @@
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
           <!-- Pallete -->     
-          <Color x:Key="primary-back-title-color">#EEE</Color>
+          <Color x:Key="primary-back-title-color">#fbf9ef</Color>
           <Color x:Key="primary-title-color">#222</Color>
           <!-- Pallete-end -->  
           <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
