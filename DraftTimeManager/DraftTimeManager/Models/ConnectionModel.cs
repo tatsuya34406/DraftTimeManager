@@ -48,6 +48,16 @@ namespace DraftTimeManager.Models
             }
         }
 
+        public async Task<Settings> GetSettings()
+        {
+            using (var connection = await CreateConnection())
+            {
+                var setting = connection.Table<Settings>().FirstOrDefault();
+
+                return setting;
+            }
+        }
+
         #region initialize
         public async void DBInitialize()
         {
