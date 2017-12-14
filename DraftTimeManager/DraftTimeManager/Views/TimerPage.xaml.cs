@@ -66,5 +66,14 @@ namespace DraftTimeManager.Views
             model.TimerEnd();
             base.OnDisappearing();
         }
+
+        protected override async void OnAppearing()
+        {
+            var conn = new ConnectionModel();
+            var setting = await conn.GetSettings();
+            model.Initialize(setting);
+
+            base.OnAppearing();
+        }
     }
 }

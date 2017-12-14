@@ -64,23 +64,36 @@ namespace DraftTimeManager.Models
             IFolder rootFolder = FileSystem.Current.LocalStorage;
 
             IFile new_file = await rootFolder.CreateFileAsync(DatabaseFileName, CreationCollisionOption.ReplaceExisting);
-            var connection = new SQLiteConnection(new_file.Path);
-            connection.CreateTable<Users>();
-            connection.CreateTable<Environments>();
-            connection.CreateTable<EnvironmentUserScore>();
-            connection.CreateTable<OpponentUserScore>();
-            connection.CreateTable<TempDraftResults>();
-            connection.CreateTable<DraftResults>();
-            connection.CreateTable<Settings>();
+            using (var connection = new SQLiteConnection(new_file.Path))
+            {
+                try
+                {
+                    connection.BeginTransaction();
 
-            connection.InsertAll(InitialUsers());
-            connection.InsertAll(InitialEnvironments());
-            connection.Insert(InitialSettings());
+                    connection.CreateTable<Users>();
+                    connection.CreateTable<Environments>();
+                    connection.CreateTable<EnvironmentUserScore>();
+                    connection.CreateTable<OpponentUserScore>();
+                    connection.CreateTable<TempDraftResults>();
+                    connection.CreateTable<DraftResults>();
+                    connection.CreateTable<Settings>();
 
-            connection.InsertAll(TestUsers());
-            connection.InsertAll(TestDraftResults());
-            connection.InsertAll(TestEnvironmentUserScore());
-            connection.InsertAll(TestOpponentUserScore());
+                    connection.InsertAll(InitialUsers());
+                    connection.InsertAll(InitialEnvironments());
+                    connection.Insert(InitialSettings());
+
+                    connection.InsertAll(TestUsers());
+                    connection.InsertAll(TestDraftResults());
+                    connection.InsertAll(TestEnvironmentUserScore());
+                    connection.InsertAll(TestOpponentUserScore());
+
+                    connection.Commit();
+                }
+                catch
+                {
+                    connection.Rollback();
+                }
+            }
         }
 
         private List<Users> InitialUsers()
@@ -112,7 +125,7 @@ namespace DraftTimeManager.Models
 
         private Settings InitialSettings()
         {
-            return new Settings() { Volume = 50, Pick_Interval = 10, Picks = 14 };
+            return new Settings() { Volume = 50, Pick_Interval = 8, Picks = 15 };
         }
 
         private List<Users> TestUsers()
