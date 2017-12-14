@@ -57,7 +57,6 @@
     <Compile Include="Views\TimerPage.xaml.cs">
       <DependentUpon>TimerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IFileHelper.cs" />
     <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Entities\Environments.cs" />

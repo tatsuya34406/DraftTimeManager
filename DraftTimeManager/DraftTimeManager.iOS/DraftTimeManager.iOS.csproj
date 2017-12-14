@@ -98,7 +98,6 @@
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
-    <Compile Include="FileHelper.cs" />
     <Compile Include="SleepScreen.cs" />
   </ItemGroup>
   <ItemGroup>
