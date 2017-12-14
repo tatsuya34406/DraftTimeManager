@@ -10,13 +10,13 @@ namespace DraftTimeManager.Entities
     [Table("DraftResults")]
     public class DraftResults
     {
-        [PrimaryKey, Column("Draft_Id")]
+        [Indexed(Name = "DraftResultIdx", Order = 1, Unique = true), Column("Draft_Id")]
         public int Draft_Id { get; set; }
 
-        [PrimaryKey, Column("User_Id")]
+        [Indexed(Name = "DraftResultIdx", Order = 2, Unique = true), Column("User_Id")]
         public string User_Id { get; set; }
 
-        [Column("User_Id")]
+        [Column("Env_Id")]
         public string Env_Id { get; set; }
 
         [Column("R1_Vs_User")]
