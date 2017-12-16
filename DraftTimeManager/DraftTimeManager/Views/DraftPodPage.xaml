@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DraftTimeManager.Views.DraftPodPage"
+             Title="PodCreate" >
+	<AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+        <Grid VerticalOptions ="Start" HorizontalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" /> 
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Player"
+                x:Name="lblPlayer"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                TextColor="#222"
+                Margin="0, 10, 0, 0"
+                Grid.Row="0" Grid.Column="0"/>
+            
+            <Picker x:Name="PickerPlayer"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                ItemsSource="{Binding PlayerNumbers}"
+                SelectedItem="{Binding SelectPlayerNumber}"
+                SelectedIndexChanged="PickerPlayer_SelectedIndexChanged"
+                Margin="0, 10, 0, 0"
+                Grid.Row="0" Grid.Column="1"/>
+
+            <Label Text="Guest"
+                x:Name="lblGuest"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                TextColor="#222"
+                Margin="0, 10, 0, 0"
+                Grid.Row="0" Grid.Column="2"/>
+            
+            <Picker x:Name="PickerGuest"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                ItemsSource="{Binding GuestNumbers}"
+                SelectedItem="{Binding SelectGuestNumber}"
+                SelectedIndexChanged="PickerGuest_SelectedIndexChanged"
+                Margin="0, 10, 0, 0"
+                Grid.Row="0" Grid.Column="3" />
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>
