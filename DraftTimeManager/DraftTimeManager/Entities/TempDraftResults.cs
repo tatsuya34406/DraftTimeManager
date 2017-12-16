@@ -23,19 +23,19 @@ namespace DraftTimeManager.Entities
         public string R1_Vs_User { get; set; }
 
         [Column("R1_Result")]
-        public int R1_Result { get; set; }
+        public int? R1_Result { get; set; }
 
         [Column("R2_Vs_User")]
         public string R2_Vs_User { get; set; }
 
         [Column("R2_Result")]
-        public int R2_Result { get; set; }
+        public int? R2_Result { get; set; }
 
         [Column("R3_Vs_User")]
         public string R3_Vs_User { get; set; }
 
         [Column("R3_Result")]
-        public int R3_Result { get; set; }
+        public int? R3_Result { get; set; }
 
         [Column("Rank")]
         public int Rank { get; set; }
