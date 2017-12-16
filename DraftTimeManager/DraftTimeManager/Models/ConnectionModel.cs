@@ -20,16 +20,23 @@ namespace DraftTimeManager.Models
             DatabaseFileName = "draftmanager.db3";
         }
 
-        private async Task<SQLiteConnection> CreateConnection()
+        public SQLiteConnection CreateConnection()
+        {
+            var conn = CreateConnectionAsync();
+            conn.Wait();
+            return conn.Result;
+        }
+
+        public async Task<SQLiteConnection> CreateConnectionAsync()
         {
             // ルートフォルダを取得する
             IFolder rootFolder = FileSystem.Current.LocalStorage;
             // DBファイルの存在チェックを行う
-            var result = await rootFolder.CheckExistsAsync(DatabaseFileName);
+            var result = await rootFolder.CheckExistsAsync(DatabaseFileName).ConfigureAwait(false);
             if (result == ExistenceCheckResult.NotFound)
             {
                 // 存在しなかった場合、新たにDBファイルを作成しテーブルも併せて新規作成する
-                IFile file = await rootFolder.CreateFileAsync(DatabaseFileName, CreationCollisionOption.ReplaceExisting);
+                IFile file = await rootFolder.CreateFileAsync(DatabaseFileName, CreationCollisionOption.ReplaceExisting).ConfigureAwait(false);
                 var connection = new SQLiteConnection(file.Path);
                 connection.CreateTable<Users>();
                 connection.CreateTable<Environments>();
@@ -43,14 +50,14 @@ namespace DraftTimeManager.Models
             else
             {
                 // 存在した場合、そのままコネクションを作成する
-                IFile file = await rootFolder.CreateFileAsync(DatabaseFileName, CreationCollisionOption.OpenIfExists);
+                IFile file = await rootFolder.CreateFileAsync(DatabaseFileName, CreationCollisionOption.OpenIfExists).ConfigureAwait(false);
                 return new SQLiteConnection(file.Path);
             }
         }
 
         public async Task<Settings> GetSettings()
         {
-            using (var connection = await CreateConnection())
+            using (var connection = await CreateConnectionAsync())
             {
                 var setting = connection.Table<Settings>().FirstOrDefault();
 
