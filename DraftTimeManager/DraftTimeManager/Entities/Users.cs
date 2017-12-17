@@ -10,8 +10,8 @@ namespace DraftTimeManager.Entities
     [Table("Users")]
     public class Users
     {
-        [PrimaryKey, Column("User_Id")]
-        public string User_Id { get; set; }
+        [PrimaryKey, AutoIncrement, Column("User_Id")]
+        public int User_Id { get; set; }
 
         [NotNull, Column("User_Name")]
         public string User_Name { get; set; }
