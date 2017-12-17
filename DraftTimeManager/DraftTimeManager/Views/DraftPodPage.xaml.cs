@@ -21,8 +21,6 @@ namespace DraftTimeManager.Views
 
         }
 
-
-
         private void PickerPlayer_SelectedIndexChanged(object sender, EventArgs e)
         {
             model.SetGuestList();
@@ -32,6 +30,31 @@ namespace DraftTimeManager.Views
         private void PickerGuest_SelectedIndexChanged(object sender, EventArgs e)
         {
             model.SetGuest();
+        }
+
+        private void PickerEnvironment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private async void btnAddUser_Clicked(object sender, EventArgs e)
+        {
+            var searchModel = new DraftPodUserSearchModel();
+            var page = new DraftPodUserSearchPage(searchModel);
+            page.UserSelected += UserSelected;
+
+            await Navigation.PushAsync(page, true);
+        }
+
+        private void UserSelected(object sender, EventArgs e)
+        {
+            var searchModel = (DraftPodUserSearchModel)sender;
+            model.AddDraftJoinUsers(searchModel);
+        }
+
+        private void btnRegist_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
