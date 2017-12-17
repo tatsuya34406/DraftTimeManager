@@ -25,7 +25,10 @@ namespace DraftTimeManager.Models
         public DraftPodUserSearchModel()
         {
             SearchText = "";
-            UserList = new ObservableCollection<Users>();
+            using (var conn = new ConnectionModel().CreateConnection())
+            {
+                UserList = new ObservableCollection<Users>(conn.Table<Users>().Where(x => !x.Guest_Flg).ToList());
+            }
         }
 
         public void Search()
@@ -33,7 +36,7 @@ namespace DraftTimeManager.Models
             using (var conn = new ConnectionModel().CreateConnection())
             {
                 UserList = new ObservableCollection<Users>(
-                    conn.Table<Users>().Where(x => x.User_Name.Contains(SearchText)).ToList()
+                    conn.Table<Users>().Where(x => !x.Guest_Flg && x.User_Name.Contains(SearchText)).ToList()
                 );
             }
         }
