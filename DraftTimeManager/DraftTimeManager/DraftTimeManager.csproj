@@ -70,6 +70,10 @@
       <DependentUpon>DraftPodPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\DraftPodModel.cs" />
+    <Compile Include="Views\DraftPodUserSearchPage.xaml.cs">
+      <DependentUpon>DraftPodUserSearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DraftPodUserSearchModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -85,6 +89,10 @@
     <EmbeddedResource Include="Views\DraftPodPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DraftPodUserSearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
