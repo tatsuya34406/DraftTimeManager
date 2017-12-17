@@ -21,6 +21,9 @@ namespace DraftTimeManager.Models
         int minPlayer = 4;
         int maxPlayer = 8;
         int tempGuest = 0;
+        bool GuestNumbersResetFlg = false;
+        List<Users> GuestUsersList = new List<Users>();
+        List<Users> PlayerList = new List<Users>();
 
         public ObservableCollection<int> PlayerNumbers { get; set; }
         public ObservableCollection<int> GuestNumbers { get; set; }
@@ -36,30 +39,47 @@ namespace DraftTimeManager.Models
             SelectPlayerNumber = 8;
             SelectGuestNumber = 8;
             PlayerNumbers = new ObservableCollection<int>(Enumerable.Range(minPlayer, maxPlayer - (minPlayer - 1)).Reverse());
-            GuestNumbers = new ObservableCollection<int>(Enumerable.Range(1, maxPlayer).Reverse());
+            GuestNumbers = new ObservableCollection<int>(Enumerable.Range(0, maxPlayer + 1).Reverse());
             using(var conn = new ConnectionModel().CreateConnection())
             {
-                EnvironmentList = new ObservableCollection<Environments>(conn.Table<Environments>().ToList());   
-                DraftJoinUsers = new ObservableCollection<Users>(conn.Table<Users>().Where(x => x.Guest_Flg).ToList());   
+                EnvironmentList = new ObservableCollection<Environments>(conn.Table<Environments>().OrderBy(x => x.Env_Id).ToList());
+                GuestUsersList = conn.Table<Users>().Where(x => x.Guest_Flg).OrderBy(x => x.User_Id).ToList();
+                DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList);
             }
         }
 
         public void SetGuestList()
         {
             tempGuest = SelectGuestNumber;
-            GuestNumbers = new ObservableCollection<int>(Enumerable.Range(1, SelectPlayerNumber).Reverse());
+            GuestNumbers = new ObservableCollection<int>(Enumerable.Range(0, SelectPlayerNumber + 1).Reverse());
+            GuestNumbersResetFlg = true;
         }
 
         public void SetGuest()
         {
-            if (SelectGuestNumber != 0) return;
-            SelectGuestNumber = SelectPlayerNumber < tempGuest ? SelectPlayerNumber : tempGuest;
-            DraftJoinUsers.ToList().Where(x => x.Guest_Flg).OrderBy(x => x.User_Id).Skip(1);
+            if (GuestNumbersResetFlg)
+            {
+                SelectGuestNumber = SelectPlayerNumber < tempGuest ? SelectPlayerNumber : tempGuest;
+                DraftJoinUsers.ToList().Where(x => x.Guest_Flg).OrderBy(x => x.User_Id).Skip(1);
+                GuestNumbersResetFlg = false;
+            }
+            else
+            {
+                using (var conn = new ConnectionModel().CreateConnection())
+                {
+                    GuestUsersList = conn.Table<Users>()
+                                         .Where(x => x.Guest_Flg)
+                                         .OrderBy(x => x.User_Id)
+                                         .Take(SelectGuestNumber).ToList();
+                    DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList.Concat(PlayerList));
+                }
+            }
         }
 
         public void AddDraftJoinUsers(DraftPodUserSearchModel addmodel)
         {
-            DraftJoinUsers.Add(addmodel.SelectedUser);
+            PlayerList.Add(addmodel.SelectedUser);
+            DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList.Concat(PlayerList));
         }
     }
 }
