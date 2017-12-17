@@ -11,10 +11,10 @@ namespace DraftTimeManager.Entities
     public class OpponentUserScore
     {
         [Indexed(Name = "OppoScoreIdx", Order = 1, Unique = true), Column("User_Id")]
-        public string User_Id { get; set; }
+        public int User_Id { get; set; }
 
         [Indexed(Name = "OppoScoreIdx", Order = 2, Unique = true), Column("Vs_User_Id")]
-        public string Vs_User_Id { get; set; }
+        public int Vs_User_Id { get; set; }
 
         [Column("Cnt_Win")]
         public int Cnt_Win { get; set; }

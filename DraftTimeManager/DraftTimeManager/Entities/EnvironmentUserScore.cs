@@ -11,10 +11,10 @@ namespace DraftTimeManager.Entities
     public class EnvironmentUserScore
     {
         [Indexed(Name = "EnvUserScoreIdx", Order = 1, Unique = true), Column("User_Id")]
-        public string User_Id { get; set; }
+        public int User_Id { get; set; }
 
         [Indexed(Name = "EnvUserScoreIdx", Order = 2, Unique = true), Column("Env_Id")]
-        public string Env_Id { get; set; }
+        public int Env_Id { get; set; }
 
         [Column("Cnt_3_0")]
         public int Cnt_3_0 { get; set; }

@@ -14,25 +14,25 @@ namespace DraftTimeManager.Entities
         public int Draft_Id { get; set; }
 
         [Indexed(Name = "DraftResultIdx", Order = 2, Unique = true), Column("User_Id")]
-        public string User_Id { get; set; }
+        public int User_Id { get; set; }
 
         [Column("Env_Id")]
-        public string Env_Id { get; set; }
+        public int Env_Id { get; set; }
 
         [Column("R1_Vs_User")]
-        public string R1_Vs_User { get; set; }
+        public int? R1_Vs_User { get; set; }
 
         [Column("R1_Result")]
         public int? R1_Result { get; set; }
 
         [Column("R2_Vs_User")]
-        public string R2_Vs_User { get; set; }
+        public int? R2_Vs_User { get; set; }
 
         [Column("R2_Result")]
         public int? R2_Result { get; set; }
 
         [Column("R3_Vs_User")]
-        public string R3_Vs_User { get; set; }
+        public int? R3_Vs_User { get; set; }
 
         [Column("R3_Result")]
         public int? R3_Result { get; set; }

@@ -10,8 +10,8 @@ namespace DraftTimeManager.Entities
     [Table("Environments")]
     public class Environments
     {
-        [PrimaryKey, Column("Env_Id")]
-        public string Env_Id { get; set; }
+        [PrimaryKey, AutoIncrement, Column("Env_Id")]
+        public int Env_Id { get; set; }
 
         [NotNull, Column("Env_Name")]
         public string Env_Name { get; set; }
