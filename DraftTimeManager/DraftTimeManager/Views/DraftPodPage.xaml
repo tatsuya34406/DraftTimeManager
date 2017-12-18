@@ -73,7 +73,6 @@
                 ItemsSource="{Binding EnvironmentList}"
                 ItemDisplayBinding="{Binding Env_Name, StringFormat='{0}'}"
                 SelectedItem="{Binding SelectEnvironment}"
-                SelectedIndexChanged="PickerEnvironment_SelectedIndexChanged"
                 Grid.Row="1" Grid.Column="2"
                 Grid.ColumnSpan="2"/>
 

@@ -33,7 +33,7 @@ namespace DraftTimeManager.Models
 
         public int SelectPlayerNumber { get; set; }
         public int SelectGuestNumber { get; set; }
-        public string SelectEnvironment { get; set; }
+        public Environments SelectEnvironment { get; set; }
 
         public DraftPodModel()
         {
@@ -47,6 +47,8 @@ namespace DraftTimeManager.Models
                 GuestUsersList = conn.Table<Users>().Where(x => x.Guest_Flg).OrderBy(x => x.User_Id).ToList();
                 DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList);
                 PlayerList = new List<Users>();
+
+                SelectEnvironment = EnvironmentList.FirstOrDefault();
             }
         }
 

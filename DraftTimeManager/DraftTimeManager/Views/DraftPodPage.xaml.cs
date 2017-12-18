@@ -32,11 +32,6 @@ namespace DraftTimeManager.Views
             model.SetGuest();
         }
 
-        private void PickerEnvironment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private async void btnAddUser_Clicked(object sender, EventArgs e)
         {
             var searchModel = new DraftPodUserSearchModel(model.PlayerList);
