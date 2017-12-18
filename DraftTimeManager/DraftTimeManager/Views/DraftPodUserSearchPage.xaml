@@ -16,15 +16,14 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Start"
                 Text="{Binding SearchText}"
-                SearchButtonPressed="UserSearchBar_SearchButtonPressed"/>
+                SearchButtonPressed="UserSearchBar_SearchButtonPressed"
+                TextChanged="UserSearchBar_TextChanged"/>
             
             <ListView x:Name="SearchResultUser"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 BackgroundColor="#fbf9ef"
-                ItemsSource="{Binding UserList}"
-                SelectedItem="{Binding SelectedUser}"
-                ItemSelected="SearchResultUser_ItemSelected">
+                ItemsSource="{Binding UserList}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -27,9 +27,9 @@ namespace DraftTimeManager.Views
             model.Search();
         }
 
-        private void SearchResultUser_ItemSelected(object sender, EventArgs e)
+        private void UserSearchBar_TextChanged(object sender, EventArgs e)
         {
-            
+            if(string.IsNullOrEmpty(model.SearchText)) model.SearchReset();
         }
 
         private void OnToggled(object sender, EventArgs e)

@@ -51,8 +51,12 @@ namespace DraftTimeManager.Models
 
         public void Search()
         {
-            UserList = new ObservableCollection<JoinUsers>(
-                AllUserList.Where(x => x.User_Name.Contains(SearchText)));
+            UserList = new ObservableCollection<JoinUsers>(AllUserList.Where(x => x.User_Name.Contains(SearchText)));
+        }
+
+        public void SearchReset()
+        {
+            UserList = new ObservableCollection<JoinUsers>(AllUserList);
         }
 
         public void TempSaveJoinUsers()
