@@ -32,6 +32,11 @@ namespace DraftTimeManager.Views
             
         }
 
+        private void OnToggled(object sender, EventArgs e)
+        {
+            model.TempSaveJoinUsers();
+        }
+
         protected override void OnDisappearing()
         {
             if(UserSelected != null)

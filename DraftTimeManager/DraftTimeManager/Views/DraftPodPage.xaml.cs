@@ -39,7 +39,7 @@ namespace DraftTimeManager.Views
 
         private async void btnAddUser_Clicked(object sender, EventArgs e)
         {
-            var searchModel = new DraftPodUserSearchModel();
+            var searchModel = new DraftPodUserSearchModel(model.PlayerList);
             var page = new DraftPodUserSearchPage(searchModel);
             page.UserSelected += UserSelected;
 

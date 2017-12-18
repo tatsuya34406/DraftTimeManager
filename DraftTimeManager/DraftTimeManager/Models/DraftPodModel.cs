@@ -22,8 +22,9 @@ namespace DraftTimeManager.Models
         int maxPlayer = 8;
         int tempGuest = 0;
         bool GuestNumbersResetFlg = false;
-        List<Users> GuestUsersList = new List<Users>();
-        List<Users> PlayerList = new List<Users>();
+
+        public List<Users> GuestUsersList { get; set; }
+        public List<Users> PlayerList { get; set; }
 
         public ObservableCollection<int> PlayerNumbers { get; set; }
         public ObservableCollection<int> GuestNumbers { get; set; }
@@ -45,6 +46,7 @@ namespace DraftTimeManager.Models
                 EnvironmentList = new ObservableCollection<Environments>(conn.Table<Environments>().OrderBy(x => x.Env_Id).ToList());
                 GuestUsersList = conn.Table<Users>().Where(x => x.Guest_Flg).OrderBy(x => x.User_Id).ToList();
                 DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList);
+                PlayerList = new List<Users>();
             }
         }
 
@@ -60,7 +62,6 @@ namespace DraftTimeManager.Models
             if (GuestNumbersResetFlg)
             {
                 SelectGuestNumber = SelectPlayerNumber < tempGuest ? SelectPlayerNumber : tempGuest;
-                DraftJoinUsers.ToList().Where(x => x.Guest_Flg).OrderBy(x => x.User_Id).Skip(1);
                 GuestNumbersResetFlg = false;
             }
             else
@@ -78,7 +79,7 @@ namespace DraftTimeManager.Models
 
         public void AddDraftJoinUsers(DraftPodUserSearchModel addmodel)
         {
-            PlayerList.Add(addmodel.SelectedUser);
+            PlayerList = addmodel.JoinUserList;
             DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList.Concat(PlayerList));
         }
     }

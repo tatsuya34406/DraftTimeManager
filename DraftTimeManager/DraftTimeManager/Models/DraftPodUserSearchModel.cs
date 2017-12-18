@@ -18,27 +18,57 @@ namespace DraftTimeManager.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<Users> UserList { get; set; }
-        public Users SelectedUser { get; set; }
+        public List<JoinUsers> AllUserList { get; set; }
+        public ObservableCollection<JoinUsers> UserList { get; set; }
         public string SearchText { get; set; }
+        public List<Users> JoinUserList => AllUserList.Where(x => x.JoinFlg).Cast<Users>().ToList();
 
-        public DraftPodUserSearchModel()
+        public DraftPodUserSearchModel(List<Users> joinlist)
         {
             SearchText = "";
             using (var conn = new ConnectionModel().CreateConnection())
             {
-                UserList = new ObservableCollection<Users>(conn.Table<Users>().Where(x => !x.Guest_Flg).ToList());
+                AllUserList = conn.Table<Users>()
+                    .Where(x => !x.Guest_Flg)
+                    .Select(x => new JoinUsers
+                    {
+                        User_Id = x.User_Id,
+                        User_Name = x.User_Name,
+                        DCI_Num = x.DCI_Num,
+                        Guest_Flg = x.Guest_Flg,
+                        JoinFlg = false
+                    }).OrderBy(x => x.User_Name).ToList();
+
+                foreach (var user in AllUserList)
+                {
+                    if (joinlist.Any(x => x.User_Id == user.User_Id))
+                        user.JoinFlg = true;
+                }
+
+                UserList = new ObservableCollection<JoinUsers>(AllUserList);
             }
         }
 
         public void Search()
         {
-            using (var conn = new ConnectionModel().CreateConnection())
+            UserList = new ObservableCollection<JoinUsers>(
+                AllUserList.Where(x => x.User_Name.Contains(SearchText)));
+        }
+
+        public void TempSaveJoinUsers()
+        {
+            var TmpAllUserList = AllUserList;
+            foreach(var user in UserList)
             {
-                UserList = new ObservableCollection<Users>(
-                    conn.Table<Users>().Where(x => !x.Guest_Flg && x.User_Name.Contains(SearchText)).ToList()
-                );
+                TmpAllUserList.RemoveAll(x => x.User_Id == user.User_Id);
+                TmpAllUserList.Add(user);
             }
+            AllUserList = TmpAllUserList.OrderBy(x => x.User_Name).ToList();
+        }
+
+        public class JoinUsers : Users
+        {
+            public bool JoinFlg { get; set; }
         }
     }
 }

@@ -28,12 +28,27 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#fbf9ef">
+                            <Grid VerticalOptions ="Start" HorizontalOptions="FillAndExpand"
+                                AbsoluteLayout.LayoutFlags="All"
+                                AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                
                                 <Label VerticalOptions="FillAndExpand" 
-                                VerticalTextAlignment="Center" 
-                                Text="{Binding User_Name}" 
-                                TextColor="#222" BackgroundColor="#fbf9ef"/>
-                            </StackLayout>
+                                    VerticalTextAlignment="Center" 
+                                    Text="{Binding User_Name}" 
+                                    TextColor="#222" BackgroundColor="#fbf9ef"
+                                    Grid.Row="0" Grid.Column="0"/>
+                                <Switch 
+                                    IsToggled="{Binding JoinFlg}"
+                                    Toggled="OnToggled"
+                                    Grid.Row="0" Grid.Column="1"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
