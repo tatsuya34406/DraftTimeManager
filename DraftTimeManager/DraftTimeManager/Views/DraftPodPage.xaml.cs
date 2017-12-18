@@ -47,9 +47,24 @@ namespace DraftTimeManager.Views
             model.AddDraftJoinUsers(searchModel);
         }
 
-        private void btnRegist_Clicked(object sender, EventArgs e)
+        private async void btnRegist_Clicked(object sender, EventArgs e)
         {
+            if (!model.IsAbleToRegist)
+            {
+                await DisplayAlert(
+                    "Can not create Draft Pod.",
+                    $"Must be {model.SelectPlayerNumber} people.",
+                    "OK");
+                return;
+            }
 
+            model.RegistDraftPod();
+
+            await DisplayAlert(
+                    "Create Pod!",
+                    "Move to Draft Timer.",
+                    "OK");
+            return;
         }
     }
 }

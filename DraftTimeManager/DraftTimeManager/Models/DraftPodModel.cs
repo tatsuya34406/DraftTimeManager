@@ -35,6 +35,8 @@ namespace DraftTimeManager.Models
         public int SelectGuestNumber { get; set; }
         public Environments SelectEnvironment { get; set; }
 
+        public bool IsAbleToRegist => DraftJoinUsers.Count() == SelectPlayerNumber;
+
         public DraftPodModel()
         {
             SelectPlayerNumber = 8;
@@ -83,6 +85,40 @@ namespace DraftTimeManager.Models
         {
             PlayerList = addmodel.JoinUserList;
             DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList.Concat(PlayerList));
+        }
+
+        public void RegistDraftPod()
+        {
+            List<TempDraftResults> insertdata = new List<TempDraftResults>();
+
+            using (var conn = new ConnectionModel().CreateConnection())
+            {
+                var draftid = conn.Table<DraftResults>().Any()
+                                  ? conn.Table<DraftResults>().Select(x => x.Draft_Id).Max() + 1
+                                  : 0;
+                var draftdate = DateTime.Now;
+                
+                insertdata.AddRange(DraftJoinUsers.Select(x => new TempDraftResults
+                {
+                    Draft_Id = draftid,
+                    User_Id = x.User_Id,
+                    Env_Id = SelectEnvironment.Env_Id,
+                    Draft_Date = draftdate
+                }));
+
+                try
+                {
+                    conn.BeginTransaction();
+
+                    conn.InsertAll(insertdata);
+
+                    conn.Commit();
+                }
+                catch
+                {
+                    conn.Rollback();
+                }
+            }
         }
     }
 }
