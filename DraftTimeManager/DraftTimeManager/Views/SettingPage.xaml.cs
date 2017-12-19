@@ -13,11 +13,20 @@ namespace DraftTimeManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingPage : ContentPage
     {
+        SettingModel model;
         public SettingPage()
         {
+            model = new SettingModel();
+            this.BindingContext = model;
+
             InitializeComponent();
 
             background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
+        }
+
+        void btnReset_Clicked(object sender, System.EventArgs e)
+        {
+            model.SetInitialSetting();
         }
     }
 }

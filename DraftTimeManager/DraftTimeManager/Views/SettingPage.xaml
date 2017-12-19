@@ -20,7 +20,8 @@
             <Slider x:Name="SliderVolume"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
-                    Minimum="0" Maximum="100" />
+                    Minimum="0" Maximum="100"
+                    Value="{Binding Volume}"/>
             <Label Text="Pick interval"
                    x:Name="lblPickInterval" 
                    HorizontalTextAlignment="Start"
@@ -29,17 +30,30 @@
             <Entry Placeholder="10"
                    x:Name="EntryPickInterval"
                    HorizontalOptions="FillAndExpand"
-                   VerticalOptions="Center"/>
-            <Label Text="Default Picks"
+                   VerticalOptions="Center"
+                   Text="{Binding Pick_Interval}"
+                   Keyboard="Numeric"/>
+            <Label Text="Default picks of number"
                    x:Name="lblDefaultPicks" 
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center"
                    TextColor="#222"/>
-            <Entry Placeholder="14"
-                   x:Name="EntryDefaultPicks"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="Center"
-                   HorizontalTextAlignment="Start"/>
+            <Picker x:Name="PickerDefaultPicks"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                ItemsSource="{Binding DefaultPicksList}"
+                SelectedItem="{Binding Picks}" />
+
+            <Button Text="Reset"
+                    x:Name="btnReset"
+                    Clicked="btnReset_Clicked" 
+                    BorderColor="#1E3A67"
+                    BorderWidth="1"
+                    TextColor="#1E3A67"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="FillAndExpand" 
+                    Margin="10"/>
         </StackLayout>
+
     </AbsoluteLayout>
 </ContentPage>
