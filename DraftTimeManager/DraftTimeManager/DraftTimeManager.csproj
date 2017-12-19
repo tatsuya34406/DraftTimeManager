@@ -43,6 +43,16 @@
     </Compile>
     <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Interfaces\ITextToSpeech.cs" />
+    <Compile Include="Views\DraftHistoryPage.xaml.cs">
+      <DependentUpon>DraftHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DraftHistoryPlayersModel.cs" />
+    <Compile Include="Views\DraftHistoryPlayerDetailPage.xaml.cs">
+      <DependentUpon>DraftHistoryPlayerDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DraftHistoryPlayersPage.xaml.cs">
+      <DependentUpon>DraftHistoryPlayersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -181,6 +191,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DraftHistoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DraftHistoryPlayersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DraftHistoryPlayerDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
