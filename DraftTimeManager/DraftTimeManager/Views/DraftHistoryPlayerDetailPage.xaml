@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DraftTimeManager.Views.DraftHistoryPlayerDetailPage"
+             Title="PlayerDetail">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="PlayerName" />
+            <Label Text="{Binding Player_Name}" />
+            <Label Text="R1" />
+            <Label Text="{Binding R1_Opponent_Name}" />
+            <Label Text="{Binding R1_Result}" />
+            <Label Text="R2" />
+            <Label Text="{Binding R2_Opponent_Name}" />
+            <Label Text="{Binding R2_Result}" />
+            <Label Text="R3" />
+            <Label Text="{Binding R3_Opponent_Name}" />
+            <Label Text="{Binding R3_Result}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
