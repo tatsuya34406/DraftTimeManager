@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DraftTimeManager.Views.SettingPage"
+             Title="Settings">
+    <AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+        
+        <StackLayout AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Padding="10" >
+            <Label Text="Volume"
+                   x:Name="lblVolume" 
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   TextColor="#222"/>
+            <Slider x:Name="SliderVolume"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    Minimum="0" Maximum="100" />
+            <Label Text="Pick interval"
+                   x:Name="lblPickInterval" 
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   TextColor="#222"/>
+            <Entry Placeholder="10"
+                   x:Name="EntryPickInterval"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center"/>
+            <Label Text="Default Picks"
+                   x:Name="lblDefaultPicks" 
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   TextColor="#222"/>
+            <Entry Placeholder="14"
+                   x:Name="EntryDefaultPicks"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Start"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

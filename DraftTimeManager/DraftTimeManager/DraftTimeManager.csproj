@@ -66,6 +66,9 @@
     <Compile Include="Interfaces\ISleepScreen.cs" />
     <Compile Include="Entities\Settings.cs" />
     <Compile Include="Entities\TempDraftResults.cs" />
+    <Compile Include="Views\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -78,6 +81,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Images\cork-wallet.png" />
     <EmbeddedResource Include="Images\rotate.png" />
+    <EmbeddedResource Include="Views\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PropertyChanged, Version=2.1.4.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
