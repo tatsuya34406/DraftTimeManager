@@ -22,6 +22,17 @@ namespace DraftTimeManager.Views
             InitializeComponent();
 
             background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
+            switch(Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    PlusIcon.Icon = new FileImageSource { File = "icon-plus.png" };
+                    break;
+                case Device.Android:
+                    PlusIcon.Icon = new FileImageSource { File = "icon_plus.png" };
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void UserSearchBar_SearchButtonPressed(object sender, EventArgs e)
@@ -32,6 +43,11 @@ namespace DraftTimeManager.Views
         private void UserSearchBar_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(model.SearchText)) model.SearchReset();
+        }
+
+        void PlusIcon_Clicked(object sender, System.EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

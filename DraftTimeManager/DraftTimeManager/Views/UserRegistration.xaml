@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DraftTimeManager.Views.UserRegistration">
-	<AbsoluteLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="PlusIcon" 
+                     Command="{Binding CreateNewScopeCommand}"
+                     Clicked="PlusIcon_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout>
         <Image x:Name="background"
             Aspect="AspectFill"
             AbsoluteLayout.LayoutFlags="All"
