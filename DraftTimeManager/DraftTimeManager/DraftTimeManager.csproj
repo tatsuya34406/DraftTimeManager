@@ -66,10 +66,14 @@
     <Compile Include="Interfaces\ISleepScreen.cs" />
     <Compile Include="Entities\Settings.cs" />
     <Compile Include="Entities\TempDraftResults.cs" />
-    <Compile Include="Views\UserRegistration.xaml.cs">
-      <DependentUpon>UserRegistration.xaml</DependentUpon>
+    <Compile Include="Views\UserSettingPage.xaml.cs">
+      <DependentUpon>UserSettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\UserRegistrationModel.cs" />
+    <Compile Include="Views\UserEditPage.xaml.cs">
+      <DependentUpon>UserEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserEditModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -82,7 +86,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Images\cork-wallet.png" />
     <EmbeddedResource Include="Images\rotate.png" />
-    <EmbeddedResource Include="Views\UserRegistration.xaml">
+    <EmbeddedResource Include="Views\UserSettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

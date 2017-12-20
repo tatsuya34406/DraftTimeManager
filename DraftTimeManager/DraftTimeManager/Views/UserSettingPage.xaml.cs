@@ -11,10 +11,10 @@ using DraftTimeManager.Models;
 namespace DraftTimeManager.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UserRegistration : ContentPage
+    public partial class UserSettingPage : ContentPage
     {
         UserRegistrationModel model;
-        public UserRegistration()
+        public UserSettingPage()
         {
             model = new UserRegistrationModel();
             this.BindingContext = model;
