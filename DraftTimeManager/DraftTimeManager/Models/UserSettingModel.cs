@@ -14,14 +14,15 @@ using PropertyChanged;
 
 namespace DraftTimeManager.Models
 {
-    public class UserRegistrationModel : INotifyPropertyChanged
+    public class UserSettingModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string SearchText { get; set; }
         public ObservableCollection<Users> UserList { get; set; }
+        public Users SelectedUser { get; set; }
 
-        public UserRegistrationModel()
+        public UserSettingModel()
         {
             SearchReset();
         }

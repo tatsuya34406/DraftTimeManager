@@ -13,10 +13,10 @@ namespace DraftTimeManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserSettingPage : ContentPage
     {
-        UserRegistrationModel model;
+        UserSettingModel model;
         public UserSettingPage()
         {
-            model = new UserRegistrationModel();
+            model = new UserSettingModel();
             this.BindingContext = model;
 
             InitializeComponent();
@@ -48,6 +48,13 @@ namespace DraftTimeManager.Views
         private async void PlusIcon_Clicked(object sender, System.EventArgs e)
         {
             var page = new UserEditPage();
+
+            await Navigation.PushAsync(page, true);
+        }
+
+        private async void SearchResultUser_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            var page = new UserEditPage(model.SelectedUser.User_Id);
 
             await Navigation.PushAsync(page, true);
         }

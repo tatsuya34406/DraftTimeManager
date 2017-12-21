@@ -69,7 +69,7 @@
     <Compile Include="Views\UserSettingPage.xaml.cs">
       <DependentUpon>UserSettingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserRegistrationModel.cs" />
+    <Compile Include="Models\UserSettingModel.cs" />
     <Compile Include="Views\UserEditPage.xaml.cs">
       <DependentUpon>UserEditPage.xaml</DependentUpon>
     </Compile>

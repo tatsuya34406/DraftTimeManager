@@ -24,6 +24,16 @@ namespace DraftTimeManager.Views
             background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
         }
 
+        public UserEditPage(int userid)
+        {
+            model = new UserEditModel(userid);
+            this.BindingContext = model;
+
+            InitializeComponent();
+
+            background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
+        }
+
         async void btnRegist_Clicked(object sender, System.EventArgs e)
         {
             if (model.IsRegist)

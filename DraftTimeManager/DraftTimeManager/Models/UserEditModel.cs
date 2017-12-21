@@ -29,6 +29,18 @@ namespace DraftTimeManager.Models
             UserId = 0;
         }
 
+        public UserEditModel(int userid)
+        {
+            using(var conn = new ConnectionModel().CreateConnection())
+            {
+                var user = conn.Get<Users>(userid);
+
+                UserId = user.User_Id;
+                UserName = user.User_Name;
+                DCINumber = user.DCI_Num;
+            }
+        }
+
         public void UserRegist()
         {
             var user = new Users

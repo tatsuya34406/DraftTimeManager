@@ -27,7 +27,9 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 BackgroundColor="#fbf9ef"
-                ItemsSource="{Binding UserList}" >
+                ItemsSource="{Binding UserList}"
+                SelectedItem="{Binding SelectedUser}"
+                ItemSelected="SearchResultUser_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
