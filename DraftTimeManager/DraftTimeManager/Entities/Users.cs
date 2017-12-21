@@ -19,7 +19,10 @@ namespace DraftTimeManager.Entities
         [Column("DCI_Num")]
         public string DCI_Num { get; set; }
 
-        [Column("Guest_Flg")]
+        [NotNull, Column("Guest_Flg")]
         public bool Guest_Flg { get; set; }
+
+        [NotNull, Column("Delete_Flg")]
+        public bool Delete_Flg { get; set; }
     }
 }

@@ -18,5 +18,11 @@ namespace DraftTimeManager.Entities
 
         [NotNull, Column("Picks")]
         public int Picks { get; set; }
+
+        [NotNull, Column("Default_Flg")]
+        public bool Default_Flg { get; set; }
+
+        [NotNull, Column("Delete_Flg")]
+        public bool Delete_Flg { get; set; }
     }
 }
