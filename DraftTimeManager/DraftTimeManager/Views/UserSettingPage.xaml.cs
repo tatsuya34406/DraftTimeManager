@@ -45,9 +45,11 @@ namespace DraftTimeManager.Views
             if (string.IsNullOrEmpty(model.SearchText)) model.SearchReset();
         }
 
-        void PlusIcon_Clicked(object sender, System.EventArgs e)
+        private async void PlusIcon_Clicked(object sender, System.EventArgs e)
         {
-            throw new NotImplementedException();
+            var page = new UserEditPage();
+
+            await Navigation.PushAsync(page, true);
         }
     }
 }

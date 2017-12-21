@@ -13,9 +13,24 @@ namespace DraftTimeManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserEditPage : ContentPage
     {
+        UserEditModel model;
         public UserEditPage()
         {
+            model = new UserEditModel();
+            this.BindingContext = model;
+
             InitializeComponent();
+
+            background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
+        }
+
+        async void btnRegist_Clicked(object sender, System.EventArgs e)
+        {
+            if (model.IsRegist)
+            {
+                model.UserRegist();
+                await Navigation.PopAsync(true);
+            }
         }
     }
 }

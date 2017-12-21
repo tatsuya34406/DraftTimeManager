@@ -2,6 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="DraftTimeManager.Views.UserEditPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+    <AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+        <StackLayout 
+            VerticalOptions ="Start" 
+            HorizontalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Padding="10">
+            
+            <Label x:Name="lblUserName"
+                Text="User Name"
+                VerticalOptions="Center"
+                HorizontalOptions="Start" />
+
+            <Entry x:Name="entryUserName"
+                Text="{Binding UserName}"
+                Placeholder="name"
+                VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand" />
+
+            <Label x:Name="lblDCINumber"
+                Text="DCI Number"
+                VerticalOptions="Center"
+                HorizontalOptions="Start" />
+
+            <Entry x:Name="entryDCINumber"
+                Text="{Binding DCINumber}"
+                Placeholder="01234567890"
+                VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Numeric"/>
+
+            <Button x:Name="btnRegist"
+                Text="Regist"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
+                BorderColor="#1E3A67"
+                BorderWidth="1"
+                TextColor="#1E3A67"
+                Clicked="btnRegist_Clicked"
+                IsEnabled="{Binding IsRegist}"/>
+        </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>
