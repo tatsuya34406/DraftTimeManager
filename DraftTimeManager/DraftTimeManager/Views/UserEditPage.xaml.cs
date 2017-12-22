@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using DraftTimeManager.Models;
+using DraftTimeManager.Entities;
 
 namespace DraftTimeManager.Views
 {
