@@ -70,6 +70,14 @@
       <DependentUpon>EnvironmentSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\EnvironmentSettingModel.cs" />
+    <Compile Include="Views\UserSettingPage.xaml.cs">
+      <DependentUpon>UserSettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSettingModel.cs" />
+    <Compile Include="Views\UserEditPage.xaml.cs">
+      <DependentUpon>UserEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserEditModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -85,6 +93,14 @@
     <EmbeddedResource Include="Views\EnvironmentSetting.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserSettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
