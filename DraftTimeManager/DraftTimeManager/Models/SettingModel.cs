@@ -43,5 +43,30 @@ namespace DraftTimeManager.Models
                 Picks = setting.Picks;
             }
         }
+
+        public void SaveSetting()
+        {
+            using (var conn = new ConnectionModel().CreateConnection())
+            {
+                try
+                {
+                    conn.BeginTransaction();
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append($"UPDATE {nameof(Settings)} SET ");
+                    sb.Append($"{nameof(Settings.Volume)} = {Volume}, ");
+                    sb.Append($"{nameof(Settings.Pick_Interval)} = {Pick_Interval}, ");
+                    sb.Append($"{nameof(Settings.Picks)} = {Picks} ");
+
+                    conn.Execute(sb.ToString());
+
+                    conn.Commit();
+                }
+                catch
+                {
+                    conn.Rollback();
+                }
+            }
+        }
     }
 }

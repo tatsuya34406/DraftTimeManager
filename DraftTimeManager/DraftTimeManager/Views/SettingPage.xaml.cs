@@ -28,5 +28,12 @@ namespace DraftTimeManager.Views
         {
             model.SetInitialSetting();
         }
+
+        protected override void OnDisappearing()
+        {
+            model.SaveSetting();
+
+            base.OnDisappearing();
+        }
     }
 }
