@@ -38,7 +38,7 @@ namespace DraftTimeManager.Views
                     new MenuMenuItem { Id = 0, Title = "DraftTimer", TargetType = typeof(TimerPage) },
                     new MenuMenuItem { Id = 1, Title = "PodCreate" },
                     new MenuMenuItem { Id = 2, Title = "UserRegistration" },
-                    new MenuMenuItem { Id = 3, Title = "EnvironmentRegistration" },
+                    new MenuMenuItem { Id = 3, Title = "EnvironmentRegistration", TargetType = typeof(EnvironmentSettingPage) },
                     new MenuMenuItem { Id = 4, Title = "OverallResults" },
                     new MenuMenuItem { Id = 5, Title = "PersonalResults" },
                     new MenuMenuItem { Id = 6, Title = "DraftHistory" },
