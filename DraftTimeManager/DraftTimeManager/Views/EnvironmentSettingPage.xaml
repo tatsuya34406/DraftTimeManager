@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DraftTimeManager.Views.EnvironmentSettingPage">
+	<ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="PlusIcon" 
+                     Clicked="PlusIcon_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+        <StackLayout 
+            VerticalOptions ="Start" 
+            HorizontalOptions="FillAndExpand">
+            
+            <SearchBar x:Name="EnvSearchBar" 
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                Text="{Binding SearchText}"
+                SearchButtonPressed="EnvSearchBar_SearchButtonPressed"
+                TextChanged="EnvSearchBar_TextChanged"/>
+            
+            <ListView x:Name="SearchResultEnv"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="#fbf9ef"
+                ItemsSource="{Binding EnvironmentsList}"
+                ItemSelected="SearchResultEnv_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete"
+                                    IsDestructive="true"
+                                    CommandParameter="{Binding}"
+                                    Clicked="MenuItemDelete_Clicked"/>
+                            </ViewCell.ContextActions>
+                            <StackLayout VerticalOptions ="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Label VerticalOptions="CenterAndExpand" 
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding Env_Name}" 
+                                    TextColor="#222" BackgroundColor="#fbf9ef" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
