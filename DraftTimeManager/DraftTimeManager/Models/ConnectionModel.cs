@@ -109,7 +109,8 @@ namespace DraftTimeManager.Models
             {
                 User_Id = x,
                 User_Name = "Guest" + x,
-                Guest_Flg = true
+                Guest_Flg = true,
+                Delete_Flg = false
             }).ToList();
         }
 
@@ -117,11 +118,11 @@ namespace DraftTimeManager.Models
         {
             return new List<Environments>()
             {
-                new Environments() { Env_Id = 1, Env_Name = "KLD-KLD-KLD", Picks = 14 },
-                new Environments() { Env_Id = 2, Env_Name = "KLD-AER-AER", Picks = 14 },
-                new Environments() { Env_Id = 3, Env_Name = "AKH-AKH-AKH", Picks = 14 },
-                new Environments() { Env_Id = 4, Env_Name = "AKH-HOU-HOU", Picks = 14 },
-                new Environments() { Env_Id = 5, Env_Name = "XLN-XLN-XLN", Picks = 14 },
+                new Environments() { Env_Id = 1, Env_Name = "KLD-KLD-KLD", Picks = 14, Default_Flg = true, Delete_Flg = false },
+                new Environments() { Env_Id = 2, Env_Name = "KLD-AER-AER", Picks = 14, Default_Flg = true, Delete_Flg = false },
+                new Environments() { Env_Id = 3, Env_Name = "AKH-AKH-AKH", Picks = 14, Default_Flg = true, Delete_Flg = false },
+                new Environments() { Env_Id = 4, Env_Name = "AKH-HOU-HOU", Picks = 14, Default_Flg = true, Delete_Flg = false },
+                new Environments() { Env_Id = 5, Env_Name = "XLN-XLN-XLN", Picks = 14, Default_Flg = true, Delete_Flg = false },
             };
         }
 
@@ -134,8 +135,8 @@ namespace DraftTimeManager.Models
         {
             return new List<Users>()
             {
-                new Users() { User_Id = 100, User_Name = "Tomohisa Itaya" },
-                new Users() { User_Id = 101, User_Name = "Tatsuya Nakata" },
+                new Users() { User_Id = 100, User_Name = "Tomohisa Itaya", DCI_Num = "", Guest_Flg = false, Delete_Flg = false },
+                new Users() { User_Id = 101, User_Name = "Tatsuya Nakata", DCI_Num = "", Guest_Flg = false, Delete_Flg = false },
             };
         }
 
