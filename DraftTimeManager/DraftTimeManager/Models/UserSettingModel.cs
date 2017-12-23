@@ -42,7 +42,7 @@ namespace DraftTimeManager.Models
                 {
                     UserList = new ObservableCollection<Users>(
                         conn.Table<Users>()
-                            .Where(x => x.User_Name.Contains(SearchText.Trim()) && !x.Guest_Flg && !x.Delete_Flg)
+                            .Where(x => x.User_Name.Contains(SearchText) && !x.Guest_Flg && !x.Delete_Flg)
                             .ToList());
                 }
             }

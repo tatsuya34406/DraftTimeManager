@@ -27,6 +27,8 @@ namespace DraftTimeManager.Models
         public UserEditModel()
         {
             UserId = 0;
+            UserName = string.Empty;
+            DCINumber = string.Empty;
         }
 
         public UserEditModel(int userid)
@@ -49,6 +51,7 @@ namespace DraftTimeManager.Models
                 User_Name = UserName,
                 DCI_Num = DCINumber,
                 Guest_Flg = false,
+                Delete_Flg = false
             };
 
             using(var conn = new ConnectionModel().CreateConnection())

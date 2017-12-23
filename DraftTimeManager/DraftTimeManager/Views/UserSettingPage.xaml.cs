@@ -46,27 +46,29 @@ namespace DraftTimeManager.Views
             if (string.IsNullOrEmpty(model.SearchText)) model.Search();
         }
 
-        private async void PlusIcon_Clicked(object sender, System.EventArgs e)
+        private async void PlusIcon_Clicked(object sender, EventArgs e)
         {
             var page = new UserEditPage();
+            page.UserUpdate += UpdateList;
 
             await Navigation.PushAsync(page, true);
 
             SearchResultUser.SelectedItem = null;
         }
 
-        private async void SearchResultUser_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        private async void SearchResultUser_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (SearchResultUser.SelectedItem == null) return;
 
             var page = new UserEditPage(((Users)((ListView)sender).SelectedItem).User_Id);
+            page.UserUpdate += UpdateList;
 
             await Navigation.PushAsync(page, true);
 
             SearchResultUser.SelectedItem = null;
         }
 
-        private async void MenuItemDelete_Clicked(object sender, System.EventArgs e)
+        private async void MenuItemDelete_Clicked(object sender, EventArgs e)
         {
             var user = (Users)((MenuItem)sender).CommandParameter;
             if(await DisplayAlert("DELETE?", user.User_Name, "Delete", "Cancel"))
@@ -76,6 +78,11 @@ namespace DraftTimeManager.Views
             }
 
             SearchResultUser.SelectedItem = null;
+        }
+
+        private void UpdateList(object sender, EventArgs e)
+        {
+            model.Search();
         }
     }
 }

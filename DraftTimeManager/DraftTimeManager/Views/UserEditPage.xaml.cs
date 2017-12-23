@@ -14,6 +14,7 @@ namespace DraftTimeManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserEditPage : ContentPage
     {
+        public event EventHandler UserUpdate;
         UserEditModel model;
         public UserEditPage()
         {
@@ -40,6 +41,7 @@ namespace DraftTimeManager.Views
             if (model.IsRegist)
             {
                 model.UserRegist();
+                UserUpdate(model, e);
                 await Navigation.PopAsync(true);
             }
         }
