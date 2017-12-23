@@ -67,7 +67,7 @@
     <Compile Include="Entities\Settings.cs" />
     <Compile Include="Entities\TempDraftResults.cs" />
     <Compile Include="Views\EnvironmentSettingPage.xaml.cs">
-      <DependentUpon>EnvironmentSetting.xaml</DependentUpon>
+      <DependentUpon>EnvironmentSettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\EnvironmentSettingModel.cs" />
     <Compile Include="Views\UserSettingPage.xaml.cs">
@@ -78,6 +78,10 @@
       <DependentUpon>UserEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\UserEditModel.cs" />
+    <Compile Include="Views\EnvironmentEditPage.xaml.cs">
+      <DependentUpon>EnvironmentEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnvironmentEditModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -90,7 +94,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Images\cork-wallet.png" />
     <EmbeddedResource Include="Images\rotate.png" />
-    <EmbeddedResource Include="Views\EnvironmentSetting.xaml">
+    <EmbeddedResource Include="Views\EnvironmentSettingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -101,6 +105,10 @@
     <EmbeddedResource Include="Views\UserEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EnvironmentEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

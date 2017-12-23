@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DraftTimeManager.Views.EnvironmentEditPage">
+	<AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+        <StackLayout 
+            VerticalOptions ="Start" 
+            HorizontalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Padding="10">
+            
+            <Label x:Name="lblEnvName"
+                Text="Environment Name"
+                VerticalOptions="Center"
+                HorizontalOptions="Start" />
+
+            <Entry x:Name="entryEnvName"
+                Text="{Binding EnvName}"
+                Placeholder="name"
+                VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand" />
+
+            <Label x:Name="lblPicks"
+                Text="Picks"
+                VerticalOptions="Center"
+                HorizontalOptions="Start" />
+
+            <Entry x:Name="entryPicks"
+                Text="{Binding Picks}"
+                Placeholder="14"
+                VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Numeric"/>
+
+            <Button x:Name="btnRegist"
+                Text="Regist"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
+                BorderColor="#1E3A67"
+                BorderWidth="1"
+                TextColor="#1E3A67"
+                Clicked="btnRegist_Clicked"
+                IsEnabled="{Binding IsRegist}"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
