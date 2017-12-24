@@ -43,6 +43,7 @@
     </Compile>
     <Compile Include="Models\DraftHistoryModel.cs" />
     <Compile Include="Models\DraftHistoryPlayerDetailModel.cs" />
+    <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Interfaces\ITextToSpeech.cs" />
     <Compile Include="Views\DraftHistoryPage.xaml.cs">

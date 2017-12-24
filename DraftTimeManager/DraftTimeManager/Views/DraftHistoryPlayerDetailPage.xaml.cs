@@ -15,7 +15,7 @@ namespace DraftTimeManager.Views
     {
         private DraftHistoryPlayerDetailModel Model { get; set; }
 
-        public DraftHistoryPlayerDetailPage(DraftHistoryPlayersModel.PlayerInfo playerInfo)
+        public DraftHistoryPlayerDetailPage(PlayerInfo playerInfo)
         {
             InitializeComponent();
 
