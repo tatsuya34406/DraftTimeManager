@@ -15,7 +15,16 @@ namespace DraftTimeManager.Models
         public class GroupedHistory
         {
             public int Draft_Id { get; set; }
+
             public DateTime Draft_Date { get; set; }
+
+            public string Draft_Date_Human
+            {
+                get
+                {
+                    return Draft_Date.ToString("yyyy/M/d H:m");
+                }
+            }
         }
 
         public DraftHistoryModel()

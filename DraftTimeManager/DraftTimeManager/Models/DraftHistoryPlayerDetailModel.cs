@@ -8,9 +8,9 @@ namespace DraftTimeManager.Models
 {
     public class DraftHistoryPlayerDetailModel
     {
-        public DraftHistoryPlayersModel.PlayerInfo PlayerInfo { get; set; }
+        public PlayerInfo PlayerInfo { get; set; }
 
-        public DraftHistoryPlayerDetailModel(DraftHistoryPlayersModel.PlayerInfo playerInfo)
+        public DraftHistoryPlayerDetailModel(PlayerInfo playerInfo)
         {
             PlayerInfo = playerInfo;
         }

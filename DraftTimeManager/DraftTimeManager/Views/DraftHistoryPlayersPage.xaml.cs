@@ -28,7 +28,7 @@ namespace DraftTimeManager.Views
         {
             if (e.Item == null) return;
 
-            var playerInfo = (DraftHistoryPlayersModel.PlayerInfo)e.Item;
+            var playerInfo = (PlayerInfo)e.Item;
             await Navigation.PushAsync(new DraftHistoryPlayerDetailPage(playerInfo));
 
             //Deselect Item
