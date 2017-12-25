@@ -41,9 +41,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\DraftHistoryModel.cs" />
-    <Compile Include="Models\DraftHistoryPlayerDetailModel.cs" />
-    <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Interfaces\ITextToSpeech.cs" />
     <Compile Include="Views\DraftHistoryPage.xaml.cs">
@@ -79,6 +76,29 @@
     <Compile Include="Interfaces\ISleepScreen.cs" />
     <Compile Include="Entities\Settings.cs" />
     <Compile Include="Entities\TempDraftResults.cs" />
+    <Compile Include="Views\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SettingModel.cs" />
+    <Compile Include="Views\EnvironmentSettingPage.xaml.cs">
+      <DependentUpon>EnvironmentSettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnvironmentSettingModel.cs" />
+    <Compile Include="Views\UserSettingPage.xaml.cs">
+      <DependentUpon>UserSettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSettingModel.cs" />
+    <Compile Include="Views\UserEditPage.xaml.cs">
+      <DependentUpon>UserEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserEditModel.cs" />
+    <Compile Include="Views\EnvironmentEditPage.xaml.cs">
+      <DependentUpon>EnvironmentEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnvironmentEditModel.cs" />
+    <Compile Include="Models\DraftHistoryModel.cs" />
+    <Compile Include="Models\PlayerInfo.cs" />
+    <Compile Include="Models\DraftHistoryPlayerDetailModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -91,6 +111,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Images\cork-wallet.png" />
     <EmbeddedResource Include="Images\rotate.png" />
+    <EmbeddedResource Include="Views\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EnvironmentSettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserSettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EnvironmentEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PropertyChanged, Version=2.1.4.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
@@ -172,6 +212,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
