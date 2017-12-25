@@ -96,6 +96,9 @@
       <DependentUpon>EnvironmentEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\EnvironmentEditModel.cs" />
+    <Compile Include="Models\DraftHistoryModel.cs" />
+    <Compile Include="Models\PlayerInfo.cs" />
+    <Compile Include="Models\DraftHistoryPlayerDetailModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
