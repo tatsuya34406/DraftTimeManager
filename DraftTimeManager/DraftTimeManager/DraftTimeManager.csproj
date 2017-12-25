@@ -41,8 +41,21 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\DraftHistoryModel.cs" />
+    <Compile Include="Models\DraftHistoryPlayerDetailModel.cs" />
+    <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Interfaces\ITextToSpeech.cs" />
+    <Compile Include="Views\DraftHistoryPage.xaml.cs">
+      <DependentUpon>DraftHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DraftHistoryPlayersModel.cs" />
+    <Compile Include="Views\DraftHistoryPlayerDetailPage.xaml.cs">
+      <DependentUpon>DraftHistoryPlayerDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DraftHistoryPlayersPage.xaml.cs">
+      <DependentUpon>DraftHistoryPlayersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -143,8 +156,22 @@
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Images\" />
+    <EmbeddedResource Include="Views\DraftHistoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DraftHistoryPlayersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DraftHistoryPlayerDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

@@ -1,4 +1,4 @@
-﻿using PCLStorage;
+using PCLStorage;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -135,8 +135,14 @@ namespace DraftTimeManager.Models
         {
             return new List<Users>()
             {
-                new Users() { User_Id = 100, User_Name = "Tomohisa Itaya", DCI_Num = "", Guest_Flg = false, Delete_Flg = false },
-                new Users() { User_Id = 101, User_Name = "Tatsuya Nakata", DCI_Num = "", Guest_Flg = false, Delete_Flg = false },
+                new Users() { User_Name = "Tomohisa Itaya" },
+                new Users() { User_Name = "Tatsuya Nakata" },
+                new Users() { User_Name = "Takashi Takani" },
+                new Users() { User_Name = "Reo Yoshimoto" },
+                new Users() { User_Name = "Shinsuke Ojima" },
+                new Users() { User_Name = "Ren Ishikawa" },
+                new Users() { User_Name = "Hoge Huga", Delete_Flg = true },
+                new Users() { User_Name = "Foo Bar", Delete_Flg = true },
             };
         }
 
@@ -146,13 +152,37 @@ namespace DraftTimeManager.Models
             return new List<DraftResults>()
             {
                 new DraftResults() {
-                    Draft_Id = 1, Env_Id = 5, User_Id = 100,
-                    R1_Vs_User = 1, R1_Result = 1, R2_Vs_User = 3, R2_Result = 1, R3_Vs_User = 101, R3_Result = 1,
+                    Draft_Id = 1, Env_Id = 5, User_Id = 9,
+                    R1_Vs_User = 10, R1_Result = 1, R2_Vs_User = 11, R2_Result = 1, R3_Vs_User = 13, R3_Result = 1,
                     Rank = 1, Pick_No = 1, Tournament_No = 1, Draft_Date = now },
                 new DraftResults() {
-                    Draft_Id = 1, Env_Id = 5, User_Id = 101,
-                    R1_Vs_User = 8, R1_Result = 1, R2_Vs_User = 6, R2_Result = 1, R3_Vs_User = 100, R3_Result = 0,
-                    Rank = 2, Pick_No = 8, Tournament_No = 1, Draft_Date = now },
+                    Draft_Id = 1, Env_Id = 5, User_Id = 10,
+                    R1_Vs_User = 9, R1_Result = 0, R2_Vs_User = 12, R2_Result = 1, R3_Vs_User = 14, R3_Result = 1,
+                    Rank = 3, Pick_No = 2, Tournament_No = 1, Draft_Date = now },
+                new DraftResults() {
+                    Draft_Id = 1, Env_Id = 5, User_Id = 11,
+                    R1_Vs_User = 12, R1_Result = 1, R2_Vs_User = 9, R2_Result = 0, R3_Vs_User = 15, R3_Result = 1,
+                    Rank = 5, Pick_No = 3, Tournament_No = 1, Draft_Date = now },
+                new DraftResults() {
+                    Draft_Id = 1, Env_Id = 5, User_Id = 12,
+                    R1_Vs_User = 11, R1_Result = 0, R2_Vs_User = 10, R2_Result = 0, R3_Vs_User = 16, R3_Result = 1,
+                    Rank = 7, Pick_No = 4, Tournament_No = 1, Draft_Date = now },
+                new DraftResults() {
+                    Draft_Id = 1, Env_Id = 5, User_Id = 13,
+                    R1_Vs_User = 14, R1_Result = 1, R2_Vs_User = 15, R2_Result = 1, R3_Vs_User = 9, R3_Result = 0,
+                    Rank = 2, Pick_No = 5, Tournament_No = 1, Draft_Date = now },
+                new DraftResults() {
+                    Draft_Id = 1, Env_Id = 5, User_Id = 14,
+                    R1_Vs_User = 13, R1_Result = 0, R2_Vs_User = 16, R2_Result = 1, R3_Vs_User = 10, R3_Result = 0,
+                    Rank = 4, Pick_No = 6, Tournament_No = 1, Draft_Date = now },
+                new DraftResults() {
+                    Draft_Id = 1, Env_Id = 5, User_Id = 15,
+                    R1_Vs_User = 16, R1_Result = 1, R2_Vs_User = 13, R2_Result = 0, R3_Vs_User = 11, R3_Result = 0,
+                    Rank = 6, Pick_No = 7, Tournament_No = 1, Draft_Date = now },
+                new DraftResults() {
+                    Draft_Id = 1, Env_Id = 5, User_Id = 16,
+                    R1_Vs_User = 15, R1_Result = 0, R2_Vs_User = 14, R2_Result = 0, R3_Vs_User = 12, R3_Result = 0,
+                    Rank = 8, Pick_No = 8, Tournament_No = 1, Draft_Date = now },
             };
         }
 
