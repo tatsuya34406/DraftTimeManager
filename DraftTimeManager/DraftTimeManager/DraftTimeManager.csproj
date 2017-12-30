@@ -102,6 +102,7 @@
     <Compile Include="Views\OverallResultsPage.xaml.cs">
       <DependentUpon>OverallResultsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\OverallResultModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
