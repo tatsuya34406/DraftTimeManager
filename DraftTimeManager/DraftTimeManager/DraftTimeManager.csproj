@@ -103,6 +103,10 @@
       <DependentUpon>OverallResultsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\OverallResultModel.cs" />
+    <Compile Include="Views\PersonalResultsPage.xaml.cs">
+      <DependentUpon>PersonalResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalResultModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -136,6 +140,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OverallResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PersonalResultsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
