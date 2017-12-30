@@ -99,6 +99,9 @@
     <Compile Include="Models\DraftHistoryModel.cs" />
     <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\DraftHistoryPlayerDetailModel.cs" />
+    <Compile Include="Views\OverallResultsPage.xaml.cs">
+      <DependentUpon>OverallResultsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -130,6 +133,10 @@
     <EmbeddedResource Include="Views\EnvironmentEditPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OverallResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
