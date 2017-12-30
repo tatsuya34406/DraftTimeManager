@@ -190,9 +190,9 @@ namespace DraftTimeManager.Models
         {
             return new List<EnvironmentUserScore>()
             {
-                new EnvironmentUserScore() { Env_Id = 5, User_Id = 100,
+                new EnvironmentUserScore() { Env_Id = 5, User_Id = 9,
                     Cnt_3_0 = 1, Cnt_2_1 = 0, Cnt_1_2 = 0, Cnt_0_3 = 0, Cnt_Win = 3, Cnt_Lose = 0 },
-                new EnvironmentUserScore() { Env_Id = 5, User_Id = 101,
+                new EnvironmentUserScore() { Env_Id = 5, User_Id = 10,
                     Cnt_3_0 = 0, Cnt_2_1 = 1, Cnt_1_2 = 0, Cnt_0_3 = 0, Cnt_Win = 2, Cnt_Lose = 1 },
             };
         }
@@ -201,8 +201,8 @@ namespace DraftTimeManager.Models
         {
             return new List<OpponentUserScore>()
             {
-                new OpponentUserScore() { User_Id = 100, Vs_User_Id = 101, Cnt_Win = 1, Cnt_Lose = 0},
-                new OpponentUserScore() { User_Id = 101, Vs_User_Id = 100, Cnt_Win = 0, Cnt_Lose = 1},
+                new OpponentUserScore() { User_Id = 9, Vs_User_Id = 10, Cnt_Win = 1, Cnt_Lose = 0},
+                new OpponentUserScore() { User_Id = 10, Vs_User_Id = 9, Cnt_Win = 0, Cnt_Lose = 1},
             };
         }
 
