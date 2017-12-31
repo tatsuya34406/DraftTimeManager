@@ -13,9 +13,20 @@ namespace DraftTimeManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PersonalResultsPage : ContentPage
     {
+        PersonalResultModel model;
         public PersonalResultsPage()
         {
             InitializeComponent();
+
+            background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
+        }
+
+        public PersonalResultsPage(int userid)
+        {
+            InitializeComponent();
+
+            model = new PersonalResultModel(userid);
+            this.BindingContext = model;
 
             background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
         }

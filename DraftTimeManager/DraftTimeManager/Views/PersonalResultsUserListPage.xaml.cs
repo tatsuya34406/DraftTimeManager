@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using DraftTimeManager.Models;
+using DraftTimeManager.Entities;
 
 namespace DraftTimeManager.Views
 {
@@ -38,7 +39,7 @@ namespace DraftTimeManager.Views
         {
             if (SearchResultUser.SelectedItem == null) return;
 
-            var page = new PersonalResultsPage();
+            var page = new PersonalResultsPage(((Users)SearchResultUser.SelectedItem).User_Id);
 
             await Navigation.PushAsync(page, true);
 
