@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="DraftTimeManager.Views.PersonalResultsUserListPage"
+    NavigationPage.BackButtonTitle="UserList">
+	<AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+        <StackLayout 
+            VerticalOptions ="Start" 
+            HorizontalOptions="FillAndExpand">
+            
+            <SearchBar x:Name="UserSearchBar" 
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                Text="{Binding SearchText}"
+                SearchButtonPressed="UserSearchBar_SearchButtonPressed"
+                TextChanged="UserSearchBar_TextChanged"/>
+            
+            <ListView x:Name="SearchResultUser"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="#fbf9ef"
+                ItemsSource="{Binding UserList}"
+                ItemSelected="SearchResultUser_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions ="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Label VerticalOptions="CenterAndExpand" 
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding User_Name}" 
+                                    TextColor="#222" BackgroundColor="#fbf9ef" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
