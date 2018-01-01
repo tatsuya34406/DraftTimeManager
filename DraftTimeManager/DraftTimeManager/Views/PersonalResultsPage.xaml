@@ -21,7 +21,7 @@
                 IsGroupingEnabled="true">
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell IsEnabled="false">
                             <StackLayout 
                                 VerticalOptions="FillAndExpand"
                                 BackgroundColor="#5165a3">
