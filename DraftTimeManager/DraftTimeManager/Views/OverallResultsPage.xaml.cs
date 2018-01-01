@@ -10,6 +10,7 @@ using DraftTimeManager.Models;
 
 namespace DraftTimeManager.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OverallResultsPage : ContentPage
     {
         OverallResultModel model;
@@ -23,9 +24,15 @@ namespace DraftTimeManager.Views
             background.Source = ImageSource.FromResource("DraftTimeManager.Images.cork-wallet.png");
         }
 
-        void OverallWinsCountListView_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        async void OverallWinsCountListView_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-            //throw new NotImplementedException();
+            if (OverallWinsCountListView.SelectedItem == null) return;
+
+            var page = new PersonalResultsPage(((OverallResultModel.OverallScore)e.SelectedItem).UserId);
+
+            await Navigation.PushAsync(page, true);
+
+            OverallWinsCountListView.SelectedItem = null;
         }
     }
 }

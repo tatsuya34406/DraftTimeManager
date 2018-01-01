@@ -14,7 +14,7 @@ using PropertyChanged;
 
 namespace DraftTimeManager.Models
 {
-    public class OverallResultModel: INotifyPropertyChanged
+    public class OverallResultModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -38,6 +38,7 @@ namespace DraftTimeManager.Models
                 var overallresult =
                     users.Select(x => new OverallScore
                     {
+                        UserId = x.User_Id,
                         UserName = x.User_Name,
                         wins = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Win).Sum(),
                         loses = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Lose).Sum(),
@@ -71,6 +72,7 @@ namespace DraftTimeManager.Models
                 var overallresult =
                     users.Select(x => new OverallScore
                     {
+                        UserId = x.User_Id,
                         UserName = x.User_Name,
                         wins = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Win).Sum(),
                         loses = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Lose).Sum(),
@@ -117,6 +119,7 @@ namespace DraftTimeManager.Models
                 var overallresult =
                     users.Select(x => new OverallScore
                     {
+                        UserId = x.User_Id,
                         UserName = x.User_Name,
                         wins = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Win).Sum(),
                         loses = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Lose).Sum(),
@@ -151,6 +154,7 @@ namespace DraftTimeManager.Models
                 var overallresult =
                     users.Select(x => new OverallScore
                     {
+                        UserId = x.User_Id,
                         UserName = x.User_Name,
                         wins = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Win).Sum(),
                         loses = results.Where(y => y.User_Id == x.User_Id).Select(y => y.Cnt_Lose).Sum(),
@@ -173,20 +177,21 @@ namespace DraftTimeManager.Models
                 return item;
             }
         }
-    }
 
-    public class OverallScore
-    {
-        public int Rank { get; set; }
-        public string UserName { get; set; }
-        public int wins { get; set; }
-        public int loses { get; set; }
-        public decimal percentage => wins + loses == 0 ? 0m : Math.Round(((decimal)wins / ((decimal)wins + (decimal)loses)) * 100m, 3, MidpointRounding.AwayFromZero);
-        public string Score { get; set; }
-    }
+        public class OverallScore
+        {
+            public int Rank { get; set; }
+            public string UserName { get; set; }
+            public int wins { get; set; }
+            public int loses { get; set; }
+            public decimal percentage => wins + loses == 0 ? 0m : Math.Round(((decimal)wins / ((decimal)wins + (decimal)loses)) * 100m, 3, MidpointRounding.AwayFromZero);
+            public string Score { get; set; }
+            public int UserId { get; set; }
+        }
 
-    public class GroupingItem : ObservableCollection<OverallScore>
-    {
-        public string SectionLabel { get; set; }
+        public class GroupingItem : ObservableCollection<OverallScore>
+        {
+            public string SectionLabel { get; set; }
+        }
     }
 }
