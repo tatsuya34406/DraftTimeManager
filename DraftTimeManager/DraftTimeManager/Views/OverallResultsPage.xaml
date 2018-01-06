@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="DraftTimeManager.Views.OverallResultsPage"
+    NavigationPage.BackButtonTitle="Overall">
+	<AbsoluteLayout>
+        <Image x:Name="background"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
+        
+        <StackLayout AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Padding="10" >
+            
+            <ListView x:Name="OverallWinsCountListView"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="#fbf9ef"
+                ItemsSource="{Binding OverallScoreList}"
+                ItemSelected="OverallWinsCountListView_ItemSelected"
+                IsGroupingEnabled="true">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="false">
+                            <StackLayout 
+                                VerticalOptions="FillAndExpand"
+                                BackgroundColor="#5165a3">
+                                <Label Text="{Binding SectionLabel}"
+                                    VerticalOptions="CenterAndExpand"
+                                    TextColor="#EEE" Margin="10"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid VerticalOptions="Center" Padding="10,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Rank}" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserName}" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Score}" />
+                          </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
