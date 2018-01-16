@@ -46,7 +46,7 @@ namespace DraftTimeManager.Models
             using(var conn = new ConnectionModel().CreateConnection())
             {
                 EnvironmentList = new ObservableCollection<Environments>(conn.Table<Environments>().OrderBy(x => x.Env_Id).ToList());
-                GuestUsersList = conn.Table<Users>().Where(x => x.Guest_Flg).OrderBy(x => x.User_Id).ToList();
+                GuestUsersList = conn.Table<Users>().Where(x => x.Guest_Flg).Where(x => x.User_Id != 9).OrderBy(x => x.User_Id).ToList();
                 DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList);
                 PlayerList = new List<Users>();
 
@@ -74,6 +74,7 @@ namespace DraftTimeManager.Models
                 {
                     GuestUsersList = conn.Table<Users>()
                                          .Where(x => x.Guest_Flg)
+                                         .Where(x => x.User_Id!=9)
                                          .OrderBy(x => x.User_Id)
                                          .Take(SelectGuestNumber).ToList();
                     DraftJoinUsers = new ObservableCollection<Users>(GuestUsersList.Concat(PlayerList));
@@ -89,16 +90,16 @@ namespace DraftTimeManager.Models
 
         public void RegistDraftPod()
         {
-            List<TempDraftResults> insertdata = new List<TempDraftResults>();
+            List<DraftResults> insertdata = new List<DraftResults>();
 
             using (var conn = new ConnectionModel().CreateConnection())
             {
                 var draftid = conn.Table<DraftResults>().Any()
-                                  ? conn.Table<DraftResults>().Select(x => x.Draft_Id).Max() + 1
+                                  ? conn.Table<DraftResults>().Max(x => x.Draft_Id) + 1
                                   : 0;
                 var draftdate = DateTime.Now;
-                
-                insertdata.AddRange(DraftJoinUsers.Select(x => new TempDraftResults
+
+                insertdata.AddRange(DraftJoinUsers.Select(x => new DraftResults
                 {
                     Draft_Id = draftid,
                     User_Id = x.User_Id,
@@ -106,18 +107,16 @@ namespace DraftTimeManager.Models
                     Draft_Date = draftdate
                 }));
 
-                try
-                {
-                    conn.BeginTransaction();
+                int[] pickno = Enumerable.Range(1, insertdata.Count()).OrderBy(n => Guid.NewGuid()).Take(insertdata.Count()).ToArray();
 
-                    conn.InsertAll(insertdata);
-
-                    conn.Commit();
-                }
-                catch
+                foreach(var item in insertdata.Select((u,i) => new{User = u,Index = i}))
                 {
-                    conn.Rollback();
+                    item.User.Pick_No = pickno[item.Index];
                 }
+
+                Application.Current.Properties["TempData"] = insertdata;
+                Application.Current.Properties["Users"] = DraftJoinUsers;
+
             }
         }
     }

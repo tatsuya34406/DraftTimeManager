@@ -60,10 +60,10 @@ namespace DraftTimeManager.Views
 
             model.RegistDraftPod();
 
-            await DisplayAlert(
-                    "Create Pod!",
-                    "Move to Draft Timer.",
-                    "OK");
+            var result = await DisplayActionSheet("MatchTable is", "Cancel", null, "NotRandom", "Random");
+
+            await Navigation.PushAsync(new MatchTableCreate(result.Equals("Random")));
+
             return;
         }
     }

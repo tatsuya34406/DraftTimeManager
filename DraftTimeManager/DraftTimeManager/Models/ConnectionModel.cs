@@ -86,6 +86,7 @@ namespace DraftTimeManager.Models
                     connection.CreateTable<Settings>();
 
                     connection.InsertAll(InitialUsers());
+                    connection.Insert(ByeUsers());
                     connection.InsertAll(InitialEnvironments());
                     connection.Insert(InitialSettings());
 
@@ -111,6 +112,16 @@ namespace DraftTimeManager.Models
                 User_Name = "Guest" + x,
                 Guest_Flg = true
             }).ToList();
+        }
+
+        private Users ByeUsers()
+        {
+            return new Users
+            {
+                User_Id = 9,
+                User_Name = "Bye",
+                Guest_Flg = true
+            };
         }
 
         private List<Environments> InitialEnvironments()

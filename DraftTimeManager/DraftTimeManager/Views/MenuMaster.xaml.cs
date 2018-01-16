@@ -41,7 +41,7 @@ namespace DraftTimeManager.Views
                     new MenuMenuItem { Id = 3, Title = "EnvironmentRegistration" },
                     new MenuMenuItem { Id = 4, Title = "OverallResults" },
                     new MenuMenuItem { Id = 5, Title = "PersonalResults" },
-                    new MenuMenuItem { Id = 6, Title = "DraftHistory" },
+                    new MenuMenuItem { Id = 6, Title = "DraftHistory" ,TargetType = typeof(Test)},
                 });
             }
 
